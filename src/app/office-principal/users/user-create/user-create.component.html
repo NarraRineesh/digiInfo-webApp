@@ -1,0 +1,46 @@
+
+<div class="overall">
+    <div class="row w-100 d-flex justify-content-center align-items-center text-white" style="position: absolute; top: 20px; z-index:2; margin-left: 0px;">
+        <div class="col-2"><i class="fa fa-chevron-left" aria-hidden="true" (click)="routeBack()"></i></div>
+        <div class="col-8 text-center">
+            <h2 class="m-0">Add Student</h2>
+        </div>
+        <div class="col-2"></div>
+    </div>
+	<div class="wrapper">
+		<div class="card">
+            <form [formGroup]="userForm" novalidate>
+			<div class="questionCard px-3">
+				<div class="loginWrapper p-1">
+                    <div class="inputBox mb-4">
+                        <label for="name">Name :</label>
+                        <input type="text" formControlName="name"  name="name" class="form-control"  id="name">
+                    </div>
+                    <div class="inputBox mb-4">
+                        <label for="email">Email :</label>
+                        <input type="email" formControlName="email"  name="email" class="form-control"  id="email">
+                    </div>
+                    
+                    <div class="inputBox mb-4">
+                        <label for="pwd">Password :</label>
+                        <input type="password"  name="pwd"  class="form-control" formControlName="password" id="pwd" >
+                    </div>
+                    <div class="inputBox mb-4">
+                        <label for="cpwd">Confirm password :</label>
+                        <input type="password"  name="cpwd"  class="form-control" formControlName="confirm_password" id="cpwd" >
+                    </div>
+                    <div class="inputBox mb-4">
+                        <label for="number">Mobile Number :</label>
+                        <input type="number"  name="cpwd"  class="form-control" formControlName="mobileNumber" id="number" >
+                    </div>
+                   
+                    <div class="inputBox mb-4">
+                        <input type="submit" class="btn btn-default btn-block" value="Submit"
+                        (click)="onSubmit()">
+                    </div>
+                </div>
+			</div>
+            </form>
+		</div>
+	</div>
+</div>

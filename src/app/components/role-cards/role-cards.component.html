@@ -1,0 +1,14 @@
+    <div class="overall">
+    <div class="content-wrapper" *ngFor="let data of myData">
+    <div class="content-wrapper-header"  routerLink="/login">
+     <div class="content-wrapper-context">
+      <h3 class="img-content">
+        {{data.text}} 
+      </h3>
+      <div class="content-text"></div>
+      <!-- <button class="content-button">Login</button> -->
+     </div>
+     <img class="content-wrapper-img img-fluid" [src]="data.src" alt="">
+    </div>
+</div>
+</div>

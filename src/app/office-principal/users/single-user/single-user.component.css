@@ -1,0 +1,28 @@
+.wrapper {
+    background: #F7F9FD;
+  }
+  .wrapper .inputBox label {
+    color: #787878;
+  }
+  .wrapper .inputBox input {
+    border-radius: 40px;
+    box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(0, 0, 0, 0.1);
+    border: 0 none;
+    background: #ebf5fc;
+  }
+  .wrapper .inputBox input[type=submit] {
+      font-family: 'FontAwesome', 'Second Font name' !important;
+    border-radius: 40px;
+    box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.8), 5px 5px 10px rgba(0, 0, 0, 0.1);
+    border: 0 none;
+    background: #ebf5fc;
+    height: 40px;
+    color: #787878;
+  }
+  .wrapper .inputBox input[type=submit]:active {
+    box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(0, 0, 0, 0.1);
+    color: #ff4747;
+  }
+  .wrapper p a {
+    color: #ff4747;
+  }

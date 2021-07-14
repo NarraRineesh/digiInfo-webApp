@@ -1,0 +1,46 @@
+.overall {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;  
+  margin: 0 auto; 
+  color: black;
+  background-size: cover;
+  background-position: center;
+  background-image: url(../../../assets/background.webp);
+}
+.loginWrapper{
+  background: white;
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+}
+.loginWrapper h4 {
+  color: #000000;
+}
+.loginWrapper .inputBox label {
+  color: #000000;
+}
+.loginWrapper .inputBox input {
+  border-radius: 40px;
+  box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(0, 0, 0, 0.1);
+  border: 0 none;
+  background: #ebf5fc;
+}
+.loginWrapper .inputBox input[type=submit] {
+  border-radius: 40px;
+  box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.8), 5px 5px 10px rgba(0, 0, 0, 0.1);
+  border: 0 none;
+  background: #ebf5fc;
+  height: 40px;
+  color: #000000;
+}
+.loginWrapper .inputBox input[type=submit]:active {
+  box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(0, 0, 0, 0.1);
+  color: #ff4747;
+}
+.loginWrapper p a {
+  color: #ff4747;
+}

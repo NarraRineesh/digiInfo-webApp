@@ -1,0 +1,53 @@
+.overall {
+  display: flex;
+  width: 100vw;
+  /* justify-content: center;
+  align-items: center; */
+  height: 100vh;
+  flex-direction: column;  
+  margin: 0 auto; 
+  overflow: hidden !important;
+  background-size: cover;
+  background-position: center;
+  background-image: url(../../../assets/background.webp);
+}
+.fa{
+    font-size: xx-large;
+}
+.fa-chevron-left{
+  font-size: 20px !important;
+}
+span{
+    font-size: large !important;
+    margin-top: 3px;
+}
+.box {
+   width:100%;
+   height: 160px;
+    background: #F7F9FD;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 2.4px solid transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+   .box:hover {
+    box-shadow: 0px 6px 11px rgba(52, 87, 220, 0.116876);
+    border: 2.4px solid #B0C1FF;
+    box-sizing: border-box;
+  }
+ .box svg {
+    height: 75px;
+  }
+   .box span {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+    text-align: center;
+  }

@@ -1,0 +1,121 @@
+[debug] [2021-07-14T15:45:21.489Z] ----------------------------------------------------------------------
+[debug] [2021-07-14T15:45:21.491Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\LOKESH\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2021-07-14T15:45:21.492Z] CLI Version:   9.14.0
+[debug] [2021-07-14T15:45:21.492Z] Platform:      win32
+[debug] [2021-07-14T15:45:21.492Z] Node Version:  v12.19.0
+[debug] [2021-07-14T15:45:21.493Z] Time:          Wed Jul 14 2021 21:15:21 GMT+0530 (India Standard Time)
+[debug] [2021-07-14T15:45:21.493Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-07-14T15:45:21.500Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-07-14T15:45:21.501Z] > authorizing via signed-in user (rineeshkumar9@gmail.com)
+[debug] [2021-07-14T15:45:21.501Z] [iam] checking project jntu-circular for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2021-07-14T15:45:21.503Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/jntu-circular:testIamPermissions  
+ {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2021-07-14T15:45:23.706Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 14 Jul 2021 15:45:21 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1406","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-14T15:45:23.707Z] >>> HTTP REQUEST POST https://iam.googleapis.com/v1/projects/jntu-circular/serviceAccounts/jntu-circular@appspot.gserviceaccount.com:testIamPermissions  
+ {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2021-07-14T15:45:25.630Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 14 Jul 2021 15:45:23 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-14T15:45:25.631Z] > refreshing access token with scopes: []
+[debug] [2021-07-14T15:45:25.632Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-07-14T15:45:26.057Z] <<< HTTP RESPONSE 200 {"date":"Wed, 14 Jul 2021 15:45:24 GMT","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-14T15:45:26.152Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/jntu-circular [none]
+[debug] [2021-07-14T15:45:26.913Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/jntu-circular 200
+[debug] [2021-07-14T15:45:26.913Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/jntu-circular {"projectId":"jntu-circular","projectNumber":"1031161147312","displayName":"jntu-circular","name":"projects/jntu-circular","resources":{"hostingSite":"jntu-circular","realtimeDatabaseInstance":"jntu-circular-default-rtdb","storageBucket":"jntu-circular.appspot.com","locationId":"us-central"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'jntu-circular'...
+[info] 
+[info] i  deploying functions, hosting 
+[debug] [2021-07-14T15:45:26.918Z] Validating nodejs source
+[debug] [2021-07-14T15:45:30.079Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "14"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^9.8.0",
+    "firebase-functions": "^3.14.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.6.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2021-07-14T15:45:30.080Z] Building nodejs source
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[debug] [2021-07-14T15:45:30.081Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-07-14T15:45:30.081Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-07-14T15:45:30.082Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-07-14T15:45:30.082Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[debug] [2021-07-14T15:45:30.083Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-07-14T15:45:30.083Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-07-14T15:45:30.506Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","date":"Wed, 14 Jul 2021 15:45:28 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-14T15:45:30.598Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/jntu-circular/services/cloudbuild.googleapis.com  
+ 
+[debug] [2021-07-14T15:45:30.600Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Wed, 14 Jul 2021 15:45:28 GMT","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-14T15:45:30.676Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/jntu-circular/services/runtimeconfig.googleapis.com  
+ 
+[debug] [2021-07-14T15:45:30.677Z] <<< HTTP RESPONSE 200 {"date":"Wed, 14 Jul 2021 15:45:28 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-14T15:45:30.754Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/jntu-circular/services/cloudfunctions.googleapis.com  
+ 
+[debug] [2021-07-14T15:45:32.673Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 14 Jul 2021 15:45:30 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-14T15:45:32.892Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 14 Jul 2021 15:45:30 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] +  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2021-07-14T15:45:32.933Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 14 Jul 2021 15:45:30 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2021-07-14T15:45:32.935Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/jntu-circular/adminSdkConfig  
+ 
+[debug] [2021-07-14T15:45:33.809Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 14 Jul 2021 15:45:32 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-14T15:45:33.809Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/jntu-circular/configs  
+ 
+[debug] [2021-07-14T15:45:34.786Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 14 Jul 2021 15:45:32 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-14T15:45:34.787Z] Analyzing nodejs backend spec
+[debug] [2021-07-14T15:45:34.904Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/jntu-circular/versions  
+ {"config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2021-07-14T15:45:37.461Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 14 Jul 2021 15:45:35 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-14T15:45:37.463Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/jntu-circular/locations/-/functions  
+ 
+[debug] [2021-07-14T15:45:38.427Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 14 Jul 2021 15:45:36 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting[jntu-circular]: beginning deploy... 
+[info] i  hosting[jntu-circular]: found 20 files in dist/gaming-tournment 
+[debug] [2021-07-14T15:45:38.442Z] > refreshing access token with scopes: []
+[debug] [2021-07-14T15:45:38.443Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-07-14T15:45:38.445Z] [hosting] hash cache [ZGlzdFxnYW1pbmctdG91cm5tZW50] stored for 20 files
+[debug] [2021-07-14T15:45:38.445Z] [hosting][hash queue][FINAL] {"max":2,"min":0,"avg":0,"active":0,"complete":20,"success":20,"errored":0,"retried":0,"total":20,"elapsed":6}
+[debug] [2021-07-14T15:45:38.995Z] <<< HTTP RESPONSE 200 {"date":"Wed, 14 Jul 2021 15:45:37 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-14T15:45:39.059Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/sites/jntu-circular/versions/7dee9a1675124670:populateFiles [none]
+[debug] [2021-07-14T15:45:39.059Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/sites/jntu-circular/versions/7dee9a1675124670:populateFiles {"files":{"/3rdpartylicenses.txt":"745f3f9cd651ea913fe820a6aa83cb845c5f76832baf81559031fefcdb48a6ff","/4.331cd2b02b9b9311f58e.js":"dbb2cc36f4335c2e98deb059d11e201b7b10d51cc0ce371b8826f66a72fa0ddb","/background.78658ce049e4e9209106.webp":"51c594ff8c0b3a319c3922bea108c7f008b79da606002303b3ee5d72999bcb2c","/favicon.ico":"2c19690e9587bae12f419b34d2edeecc76808099540a9c9f4ea6194116cfc8f7","/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf":"d9cef07d4f3569883fb4c3db76acea5478cef80775d012841eb78a42e60a8e89","/fontawesome-webfont.20fd1704ea223900efa9.woff2":"38d88317bebc79b4945a679daadd47daebbadc5cd13b41473143394ca7e8d892","/fontawesome-webfont.8b43027f47b20503057d.eot":"4944999b255adf473d5b86b300eba33737e8f598c17f24e82a28582393331209","/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg":"9b74ca5333a9ca156ae6ef0920d5bc42d283e95d25651bf4375404f0407a63ab","/fontawesome-webfont.f691f37e57f04c152e23.woff":"b51c2c79cce89b7c5947672c13f735c24ee1a9f8f6ebdb957c5fdfe567f27d37","/index.html":"2bde7567f825bf0d1dc1d0e7ce61cd5cba065754d66397c582955a0236bde49f","/main.a1bb789ba664df44ab67.js":"abdb4665d7102170175e39cf910e4da2ccecd07047bdc20c4aabb6801930a1d5","/polyfills.8c151b8375e767ff858f.js":"e323cea9bc1c58651e4b1ee5ffbb4362e270e4b11ed2390bee9e3b88394b4b73","/runtime.b87d77f4af45b5a52bb7.js":"8d86e8f4f9467e39f51d75166b6ddd9511ee9d5c101e361c5bb46b5e73f5ce43","/scripts.523d68ea4e9a21a50dc3.js":"3035e9da75118f8c526d66e8ec7eea9b87d28e6cdd8ecbf9d6b72918590f2a34","/styles.77cd762bb2b66fc2b904.css":"faa035d113843217ce0688f4c7c7a90bade4dedd1cd58a16d6ea7e443b225012","/assets/background.webp":"51c594ff8c0b3a319c3922bea108c7f008b79da606002303b3ee5d72999bcb2c","/assets/logo.jpeg":"a9f6894475cd330595a919b49ac6947a91b50697cc3f46b702216870f30a73b8","/assets/Saly-13.png":"6e0f870aa7a09cb306a4e55764fbbe4ff096529ccc452f489849ebf82e66caba","/assets/Saly-19.png":"1505f102baf1a23c1193ad266b9abfb19a5345754877a18d5f2ad56b15e8fda8","/assets/Saly-42.png":"24a4cf92276213b7fe49f76be7a69133c5293e212fd939dca80a4cb60e9d3975"}}
+[debug] [2021-07-14T15:45:41.622Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/sites/jntu-circular/versions/7dee9a1675124670:populateFiles 200
+[debug] [2021-07-14T15:45:41.623Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/sites/jntu-circular/versions/7dee9a1675124670:populateFiles {"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/jntu-circular/versions/7dee9a1675124670/files"}
+[debug] [2021-07-14T15:45:41.623Z] [hosting][populate queue][FINAL] {"max":3181,"min":3181,"avg":3181,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":3181}
+[debug] [2021-07-14T15:45:41.623Z] [hosting] uploads queued: 0
+[debug] [2021-07-14T15:45:41.623Z] [hosting][upload queue][FINAL] {"max":0,"min":9999999999,"avg":0,"active":0,"complete":0,"success":0,"errored":0,"retried":0,"total":0,"elapsed":1626277541623}
+[info] +  hosting[jntu-circular]: file upload complete 
+[debug] [2021-07-14T15:45:41.624Z] [hosting] deploy completed after 3195ms
+[debug] [2021-07-14T15:45:41.948Z] TypeError: Cannot read property 'length' of undefined
+    at Object.functionMatchesAnyGroup (C:\Users\LOKESH\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\functionsDeployHelper.js:11:23)
+    at C:\Users\LOKESH\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\deploymentPlanner.js:25:56
+    at Array.filter (<anonymous>)
+    at calculateRegionalFunctionChanges (C:\Users\LOKESH\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\deploymentPlanner.js:25:17)
+    at Object.createDeploymentPlan (C:\Users\LOKESH\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\deploymentPlanner.js:53:50)
+    at release (C:\Users\LOKESH\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release.js:24:48)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[error] 
+[error] Error: An unexpected error has occurred.

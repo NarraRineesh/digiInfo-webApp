@@ -1,1 +1,123 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+*{
+    margin: 0;
+  padding: 0;
+  box-shadow: border-box;
+    font-family: 'Mulish', sans-serif;
+}
+:root {
+  --theme-bg-color: rgba(16 18 27 / 40%);
+  --border-color: rgba(113 119 144 / 25%);
+  --theme-color: #f9fafb;
+  --button-color: #3a8af6;
+  --inactive-color: rgb(113 119 144 / 78%);
+  --body-font: "Mulish", sans-serif;
+  --hover-menu-bg: rgba(12 15 25 / 30%);
+  --content-title-color: #999ba5;
+  --content-bg: rgb(146 151 179 / 13%);
+  --button-inactive: rgb(249 250 251 / 55%);
+  --dropdown-bg: #21242d;
+  --dropdown-hover: rgb(42 46 60);
+  --popup-bg: rgb(22 25 37);
+  --search-bg: #14162b;
+  --overlay-bg: rgba(36, 39, 59, 0.3);
+  --scrollbar-bg: rgb(1 2 3 / 40%);
+  --background-color: #e5e5e5;
+}
+
+  body , html { 
+    width: 100%;
+    margin: 0;
+    font-family: 'Mulish', sans-serif !important;
+    background-size: cover;
+    height: 100%;
+    background: white;
+    background-position: center;
+    /* background-image: url(https://4kwallpapers.com/images/wallpapers/macos-big-sur-apple-layers-fluidic-colorful-dark-wwdc-2020-5120x2880-1432.jpg); */
+    overflow-x: hidden;
+    /* overflow-y: scroll; */
+}
+/* float button */
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#0C9;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+  z-index: 12;
+}
+.my-float{
+	margin-top:22px;
+}
+  .fa-chevron-left{
+    font-size: 18px !important;
+  }
+  .fa-plus-circle{
+    color: var(--button-color) 
+    
+  }
+  .back{
+    position: absolute !important;
+    top: 30px;
+    left: 30px;
+    color: white;
+  }
+  /* data tables */
+  ::ng-deep div.dataTables_wrapper div.dataTables_info {
+    padding-top: 15px!important;
+    margin-left: 5px !important;
+  }
+  div.dataTables_wrapper div.dataTables_filter {
+    text-align: right;
+    margin-right: 8px;
+  }
+  .dataTables_length label  , .dataTables_filter label ,.dataTables_info, .paginate_button{
+    color: var(--text-color)!important;
+    border-radius: 15px!important;
+  }
+  .dataTables_length select{
+    background: white!important;
+  
+  }
+  
+  .dataTables_filter input{
+    display: inline!important;
+    background: white!important;
+    border-radius: 15px!important;
+    width: 100%!important;
+    margin-top: 5px!important;
+    }
+  
+  .dataTables_wrapper .dataTables_paginate .paginate_button{
+    background: var(--button-color)!important;
+    color: white!important;
+  }
+  
+  .dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+    background: var(--button-color)!important;
+    color: white!important;
+  
+  
+  }
+  .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active{
+    /* color: var(--text-color)!important; */
+    color: white!important;
+  }
+  .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
+    color: white!important;
+  
+  }
+  table.dataTable thead .sorting, 
+  table.dataTable thead .sorting_asc, 
+  table.dataTable thead .sorting_desc {
+      background : none;
+  }
+  div.dataTables_wrapper div.dataTables_info{
+    padding-top: 0px!important;
+  }

@@ -1,0 +1,78 @@
+
+<a  class="float" (click)="addUser()">
+    <i class="fa fa-plus my-float"></i>
+    </a>
+<div class="overall">
+    <div class="row w-100 d-flex justify-content-center align-items-center text-white" style="position: absolute; top: 20px; z-index:2; margin-left: 0px;">
+        <div class="col"><i class="fa fa-chevron-left" aria-hidden="true" (click)="routeBack()"></i></div>
+        <div class="col text-center">
+            <h2 class="m-0">{{department}}</h2>
+        </div>
+        <div class="col"></div>
+    </div>
+	<div class="wrapper">
+		<div class="card">
+			<div class="questionCard px-3">
+				<input type="search" name="" id="" placeholder="Search user" (keyup)='search($event.target.value)'>
+			</div>
+            <!-- <div class="no-tem mt-3">
+                <div class="content">
+                  <img src="../assets/Saly-19.png" width="250">
+                  <p>No Users in deparment. Create User.
+                  </p>
+                </div>
+            </div> -->
+            <div *ngIf="Users.length > 0">
+                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col text-center">email</th>
+                        </tr> 
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of Users; index as i" (click)="onListItemClick(user.id)">
+                            <td style="color: black; cursor: pointer;">{{user.data.displayName}}
+                            </td>
+                            <td style="color: black; cursor: pointer;">{{user.data.email}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+		</div>
+
+	</div>
+</div><!-- 
+<div class="overall">
+<div class="container-fluid">
+    <div class="row my-4 text-white d-flex justify-content-center align-items-center">
+        <div class="col"><i class="fa fa-chevron-left" aria-hidden="true" (click)="routeBack()"></i></div>
+        <div class="col text-center">
+            <h1 class="m-0">Users</h1>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row wrapper">
+        <div class="col">
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col text-center">email</th>
+                    </tr> 
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of Users; index as i" (click)="onListItemClick(user.id)">
+                        <td style="color: black; cursor: pointer;">{{user.data.displayName}}
+                        </td>
+                        <td style="color: black; cursor: pointer;">{{user.data.email}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>
+</div> -->

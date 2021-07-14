@@ -1,0 +1,30 @@
+<div class="overall">
+    
+<div class="container-fluid">
+    <div class="row my-4 text-white d-flex justify-content-center align-items-center">
+        <div class="col"><i class="fa fa-chevron-left" aria-hidden="true" (click)="routeBack()"></i></div>
+        <div class="col text-center">
+            <h1 class="m-0">{{userName}}</h1>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="wrapper p-3">
+        <div class="inputBox mb-4">
+            <label for="fname">Username</label>
+            <input type="text"  name="fname" class="form-control" [(ngModel)]="userName" id="fname">
+        </div>
+        <div class="inputBox mb-4">
+            <label for="email">Email</label>
+            <input type="email" autocomplete="off" name="email" [(ngModel)]="userEmail" class="form-control" id="email">
+        </div>
+        <div class="inputBox mb-4">
+            <label for="role">Role</label>
+            <input type="text" autocomplete="off" name="role" [(ngModel)]="userRole" class="form-control" id="role">
+        </div>
+        <div class="inputBox my-4">
+            <input type="submit" class="btn btn-default btn-block" value=" &#xf044; &ensp; Edit" *ngIf="!showCase" (click)="editUser()">
+            <input type="submit" class="btn btn-default btn-block" value=" &#xf0ee; &ensp; Update" *ngIf="showCase" (click)="updateUser()">
+        </div>
+    </div>
+</div>
+</div>

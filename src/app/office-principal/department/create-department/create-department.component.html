@@ -1,0 +1,33 @@
+
+<div class="overall">
+    <div class="row w-100 d-flex justify-content-center align-items-center text-white" style="position: absolute; top: 20px; z-index:2; margin-left: 0px;">
+        <div class="col-2"><i class="fa fa-chevron-left" aria-hidden="true" (click)="routeBack()"></i></div>
+        <div class="col-8 text-center">
+            <h2 class="m-0">Add department</h2>
+        </div>
+        <div class="col-2"></div>
+    </div>
+	<div class="wrapper">
+		<div class="card">
+            <form [formGroup]="departmentForm" novalidate>
+			<div class="questionCard px-3">
+				<div class="loginWrapper p-1">
+                    <div class="inputBox mb-4">
+                        <label for="fname">Department name :</label>
+                        <input type="text" formControlName="name"  name="fname" class="form-control"  id="fname">
+                    </div>
+                    <!-- <div *ngIf="requiredForm.controls['name'].invalid && requiredForm.controls['name'].touched" class="alert alert-danger">
+                        <div *ngIf="requiredForm.controls['name'].errors.required">
+                        Name is required.
+                      </div>
+                    </div> -->
+                    <div class="inputBox mb-4">
+                        <input type="submit" class="btn btn-default btn-block" value="Submit"
+                        (click)="upload()">
+                    </div>
+                </div>
+			</div>
+            </form>
+		</div>
+	</div>
+</div>

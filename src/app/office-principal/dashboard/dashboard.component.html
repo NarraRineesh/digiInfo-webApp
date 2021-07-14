@@ -1,0 +1,55 @@
+<div class="overall">
+    
+<div class="container-fluid">
+    <div class="row my-4 text-white d-flex justify-content-center align-items-center">
+        <div class="col"><i class="fa fa-chevron-left" aria-hidden="true" (click)="routeBack()"></i></div>
+        <div class="col">
+            <h1 class="m-0 text-center">Dashboard</h1>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="box" (click)="route('profile')">
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                <span>Profile</span>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="box"  (click)="route('templates')">
+                <i class="fa fa-id-card-o" aria-hidden="true"></i>
+                <span>Templates</span>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-6">
+            <div class="box"  (click)="route('department')">
+                <i class="fa fa-h-square" aria-hidden="true"></i>
+                <span>Deparment</span>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="box"  (click)="route('users')">
+                <i class="fa fa-users" aria-hidden="true"></i>
+                <span>Students</span>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-6">
+            <div class="box" (click)="route('principal')">
+                <i class="fa fa-university" aria-hidden="true"></i>
+                <span>Principal</span>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="box" (click)="route('mis')">
+                <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                <span>MIS</span>
+            </div>
+        </div>
+    </div>
+    
+</div>
+</div>
