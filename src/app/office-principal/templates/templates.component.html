@@ -1,7 +1,7 @@
-<a  class="float" (click)="addTemplate()">
+<a  class="float" (click)="addTemplate()" *ngIf="user.role === 'admin'">
     <i class="fa fa-plus my-float"></i>
     </a>
-<div class="overall">
+<div class="overall" #customLoadingTemplate>
     <div class="row w-100 d-flex justify-content-center align-items-center text-white" style="position: absolute; top: 20px; z-index:2; margin-left: 0px;">
         <div class="col"><i class="fa fa-chevron-left" aria-hidden="true" (click)="routeBack()"></i></div>
         <div class="col text-center">
@@ -22,16 +22,15 @@
                 </div>
               </div> -->
 			<div class="px-lg-4 px-sm-2 px-md-2 container-fluid question" *ngFor="let template of templates">
-				<div class="card-list">
+				<div class="card-list" (click)="previewTemplate(template)">
 					<div class="row">
 						<div class="col">
 							<h4 class="m-0 p-3" style="font-size: large;">{{template.val.name}}</h4>
 						</div>
 					</div>
 				</div>
-				
 			</div>
 		</div>
-
 	</div>
 </div>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>

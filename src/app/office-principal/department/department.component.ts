@@ -3,6 +3,8 @@ import{ Location} from '@angular/common'
 import { Router } from '@angular/router';
 import { Department } from 'src/app/shared/services/department';
 import { DepartmentService } from 'src/app/shared/services/department.service';
+import { LocalUserService } from 'src/app/shared/services/localUser.serice';
+import { User } from 'src/app/shared/services/user';
 @Component({
   selector: 'app-department',
   templateUrl: './department.component.html',
@@ -10,12 +12,15 @@ import { DepartmentService } from 'src/app/shared/services/department.service';
 })
 export class DepartmentComponent implements OnInit {
   departments: Department[] = [];
-
+  user: User;
+  loading= false;
   constructor(private location: Location,
      private router: Router,
+     private localUserService: LocalUserService,
      private departmentService: DepartmentService) { }
 
   ngOnInit(): void {
+   this.user = this.localUserService.getUser()
     this.getDepartmentData();
   }
   addDepartment(){
@@ -25,6 +30,7 @@ export class DepartmentComponent implements OnInit {
     this.location.back()
   }
   getDepartmentData(){
+    this.loading = true
     this.departmentService.getDepartmentList().subscribe(res => {
       this.departments = res.map( e => {
         return {
@@ -35,6 +41,7 @@ export class DepartmentComponent implements OnInit {
       console.log(this.departments);
      
     }); 
+    this.loading= false
   }
   openSingleDepartment(department: string){
 console.log(department);

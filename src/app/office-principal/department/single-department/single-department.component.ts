@@ -4,6 +4,8 @@ import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
 import { UserService } from 'src/app/user.service';
 import { Location } from '@angular/common';
+import { LocalUserService } from 'src/app/shared/services/localUser.serice';
+import { User } from 'src/app/shared/services/user';
 @Component({
   selector: 'app-single-department',
   templateUrl: './single-department.component.html',
@@ -17,8 +19,11 @@ export class SingleDepartmentComponent implements OnInit {
   dtOptions: any = {};
   department: string
   dtTrigger: Subject<any> = new Subject();
+  user: User;
+  loading = false
   constructor(private userService: UserService, 
     private router: Router, 
+    private localUserService: LocalUserService,
     private location: Location,
     private route: ActivatedRoute,) { 
     this.department = this.route.snapshot.params.department;
@@ -44,9 +49,11 @@ export class SingleDepartmentComponent implements OnInit {
         }
       }
     };
+    this.user = this.localUserService.getUser()
     this.getUsers()
   }
   getUsers() {
+    this.loading = true
     this.userService.getUserList().subscribe(res => {
       const users = res.map( e => {
         return {
@@ -55,7 +62,7 @@ export class SingleDepartmentComponent implements OnInit {
         } as any;
       })
       this.Users = users.filter(s => s.data.department === this.department);
-
+this.loading= false
       console.log(this.Users);
       this.dtTrigger.next()
     }); 

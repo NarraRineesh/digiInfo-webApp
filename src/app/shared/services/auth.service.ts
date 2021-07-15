@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { UserService } from 'src/app/user.service';
 import { LocalUserService } from './localUser.serice';
 import { User } from './user';
+import { Location } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class AuthService {
   userData; 
   userState: any;
   constructor(
-private userService: UserService,
+private location: Location,
+
     public afs: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
@@ -37,11 +39,14 @@ private userService: UserService,
              this.userData = userRef.data()
             console.log("userRef", userRef.data());
             this.localUserService.setUser(this.userData);
-            if(this.userData.role === "subscriber") {
+            if(this.userData.role === "student") {
               this.ngZone.run(() => this.router.navigate(["/subscriber"]));
             }
-            if(this.userData.role === "editor") {
-              this.ngZone.run(() => this.router.navigate(["/editor"]));
+            if(this.userData.role === "staff") {
+              this.ngZone.run(() => this.router.navigate(["/admin"]));
+            }
+            if(this.userData.role === "principal") {
+              this.ngZone.run(() => this.router.navigate(["/admin"]));
             }
             if(this.userData.role === "admin") {
               this.ngZone.run(() => this.router.navigate(["/admin"]));
@@ -59,10 +64,14 @@ this.toastr.warning(err.message)
   SignUp(user: User) {
     return this.afAuth.createUserWithEmailAndPassword(user.email, user.password)
       .then((result) => {
-       console.log(result)
+       console.log("res",result)
+       this.toastr.success(`${result.user.email} created success.`)
+       this.location.back();
        this.SetUserData(result.user, user)
       }).catch((error) => {
         console.log(error.message)
+        this.toastr.warning(error.message)
+
       })
   }
   // Reset Forggot password

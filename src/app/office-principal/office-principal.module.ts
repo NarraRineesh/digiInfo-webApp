@@ -17,17 +17,20 @@ import { NgxDocViewerModule } from 'ngx-doc-viewer';
 import { CreateDepartmentComponent } from './department/create-department/create-department.component';
 import { SingleDepartmentComponent } from './department/single-department/single-department.component';
 import { DepartmentUserCreateComponent } from './department/department-user-create/department-user-create.component';
+import { CreatePrincipalComponent } from './create-principal/create-principal.component';
+import { NgxLoadingModule } from 'ngx-loading';
 
 
 @NgModule({
-  declarations: [DashboardComponent, TemplatesComponent, PrincipalComponent, DepartmentComponent, UsersComponent, SingleUserComponent, UserCreateComponent, MisComponent, CreateTemplatesComponent, PreviewTemplateComponent, CreateDepartmentComponent, SingleDepartmentComponent, DepartmentUserCreateComponent],
+  declarations: [DashboardComponent, TemplatesComponent, PrincipalComponent, DepartmentComponent, UsersComponent, SingleUserComponent, UserCreateComponent, MisComponent, CreateTemplatesComponent, PreviewTemplateComponent, CreateDepartmentComponent, SingleDepartmentComponent, DepartmentUserCreateComponent, CreatePrincipalComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     DataTablesModule,
     OfficePrincipalRoutingModule,
-    NgxDocViewerModule
+    NgxDocViewerModule,
+    NgxLoadingModule.forRoot({}),
   ]
 })
 export class OfficePrincipalModule { }

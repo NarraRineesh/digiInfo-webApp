@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../shared/guard/auth.guard';
+import { CreatePrincipalComponent } from './create-principal/create-principal.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CreateDepartmentComponent } from './department/create-department/create-department.component';
 import { DepartmentUserCreateComponent } from './department/department-user-create/department-user-create.component';
@@ -23,7 +24,7 @@ const routes: Routes = [
   {path: 'templates', component: TemplatesComponent,
    canActivate:[AuthGuard]
   },
-  {path: 'template/:id', component: PreviewTemplateComponent,
+  {path: 'template', component: PreviewTemplateComponent,
    canActivate:[AuthGuard]
   },
   {path: 'add-template', component: CreateTemplatesComponent,
@@ -32,6 +33,9 @@ const routes: Routes = [
   {path: 'principal', component: PrincipalComponent,
    canActivate:[AuthGuard]
   },
+  {path: 'add-principal', component: CreatePrincipalComponent,
+canActivate: [AuthGuard]
+},
   {path: 'department', component: DepartmentComponent,
    canActivate:[AuthGuard]
   },

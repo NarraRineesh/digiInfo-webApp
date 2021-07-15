@@ -1,6 +1,6 @@
 .overall {
     width: 100vw;
-    height: 100vh;  
+    height: 100%;  
     margin: 0 auto; 
    overflow-x: hidden;
     background: linear-gradient(
@@ -17,13 +17,6 @@
   .question {
     margin-top: 10px;
   }
-  h2 {
-    display: inline-block;
-    width: 180px;
-    white-space: nowrap;
-    overflow: hidden !important;
-    text-overflow: ellipsis;
-}
   
   .card {
     width: 100%;
@@ -37,7 +30,7 @@
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
-    height: auto;
+    height: inherit;
     background-color: #fff;
     position: relative;
     border-radius: 5px;
@@ -55,7 +48,7 @@
     padding: 10px;
   }
   
-  .content{
+.content{
     width: 100%;
     height: 100%;
     display: flex;
@@ -63,18 +56,18 @@
     align-items: center;
     text-align: center;
     flex-direction: column;
-  }
-  input {border:0;outline:0;}
-  input:focus {outline:none!important;}
-  img{
+}
+input {border:0;outline:0;}
+input:focus {outline:none!important;}
+img{
     margin-left: 15px;
-  }
-  p{
+}
+p{
     font-size: large;
     margin: 0;
     padding-left: 25px;
     padding-right: 25px;
-  }
+}
   .avatar-wrapper {
     height: 100px;
     width: 100px;
@@ -97,5 +90,39 @@
     padding: 0.4rem;
     cursor: pointer;
     box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
+  }
+ 
+  .loginWrapper{
+    background: white;
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+  }
+  
+  .loginWrapper .inputBox label {
+    color: #000000;
+    margin-bottom: 15px;
+  }
+  .loginWrapper .inputBox input {
+    border-radius: 40px;
+    box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(0, 0, 0, 0.1);
+    border: 0 none;
+    background: #ebf5fc;
+  }
+  .loginWrapper .inputBox input[type=submit] {
+    border-radius: 40px;
+    box-shadow: -5px -5px 15px rgba(165, 137, 137, 0.8), 5px 5px 10px rgba(0, 0, 0, 0.1);
+    border: 0 none;
+    background: #ebf5fc;
+    height: 40px;
+    color: #000000;
+  }
+  .loginWrapper .inputBox input[type=submit]:active {
+    box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(0, 0, 0, 0.1);
+    color: #ff4747;
+  }
+  .loginWrapper p a {
+    color: #ff4747;
   }
   

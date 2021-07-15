@@ -11,9 +11,7 @@ import { Template } from './templates';
 })
 export class TemplateService {
 private basePath = '/templates';
-
   constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) { }
-
   pushFileToStorage(template: Template, name: string): Observable<number> {
     const filePath = `${this.basePath}/${name}`;
     const storageRef = this.storage.ref(filePath);

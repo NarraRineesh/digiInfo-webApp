@@ -1,5 +1,5 @@
 
-<div class="overall">
+<div class="overall" #customLoadingTemplate>
     <div class="row w-100 d-flex justify-content-center align-items-center text-white" style="position: absolute; top: 20px; z-index:2; margin-left: 0px;">
         <div class="col-2"><i class="fa fa-chevron-left" aria-hidden="true" (click)="routeBack()"></i></div>
         <div class="col-8 text-center">
@@ -35,3 +35,4 @@
 		</div>
 	</div>
 </div>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>

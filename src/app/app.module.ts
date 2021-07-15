@@ -26,6 +26,7 @@ import { LoaderInterceptor } from './components/loader/loader.interceptor';
 import { LoaderComponent } from './components/loader/loader.component';
 import { NgxDocViewerModule } from 'ngx-doc-viewer';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule, 
-    ToastrModule.forRoot(), 
+    ToastrModule.forRoot(),
+    NgxLoadingModule.forRoot({}),
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),

@@ -1,26 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Template } from 'src/app/shared/services/templates';
-import { TemplateService } from 'src/app/shared/services/templates.service';
+import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
 import { ConfirmedValidator } from 'src/app/shared/helpers/confirmpasswordvalidator';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { ToastrService } from 'ngx-toastr';
+
 @Component({
-  selector: 'app-user-create',
-  templateUrl: './user-create.component.html',
-  styleUrls: ['./user-create.component.css']
+  selector: 'app-create-principal',
+  templateUrl: './create-principal.component.html',
+  styleUrls: ['./create-principal.component.css']
 })
-export class UserCreateComponent implements OnInit {
-  selectedFiles: FileList;
-  currentFileUpload: Template;
-  percentage: number;
+export class CreatePrincipalComponent implements OnInit {
+  department: string;
   userForm: FormGroup;
-   loading = false
   constructor(private location: Location,
      private authService: AuthService,
      private fb: FormBuilder,
-     private toastr: ToastrService,) { }
+     private toastr: ToastrService,
+     private route: ActivatedRoute
+     ) {
+
+      }
 
   ngOnInit(): void {
     this.initForm()
@@ -31,9 +32,10 @@ export class UserCreateComponent implements OnInit {
         email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
         password: ['', [Validators.required]],
         confirm_password: ['', [Validators.required]],
-        role: ['student'],
+        role: ['principal'],
         mobileNumber: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
-    },
+        department: ''
+      },
         {
             validator: ConfirmedValidator('password', 'confirm_password')
         }
@@ -42,15 +44,14 @@ export class UserCreateComponent implements OnInit {
     this.location.back()
   }
   onSubmit(): void {
-    this.loading = true
     if(this.userForm.valid){
       this.authService.SignUp(this.userForm.value);
-      this.loading = false
       // this.toastr.success(`${this.userForm.value.name} created successfully.`);
     }
     else{  
-      this.loading = false
 this.toastr.warning('Please checkout all fields.')
     } 
   }
+
+
 }

@@ -18,7 +18,7 @@ export class SignupComponent implements OnInit {
     })
   }
   onSubmit(){
-    this.authService.SignUp(this.signupForm.value.email)
+    this.authService.SignUp(this.signupForm.value)
     }
 
 }

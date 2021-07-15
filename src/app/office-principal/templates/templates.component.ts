@@ -3,6 +3,8 @@ import{Location} from '@angular/common'
 import { Router } from '@angular/router';
 import { TemplateService } from 'src/app/shared/services/templates.service';
 import { map } from 'rxjs/operators';
+import { LocalUserService } from 'src/app/shared/services/localUser.serice';
+import { User } from 'src/app/shared/services/user';
 @Component({
   selector: 'app-templates',
   templateUrl: './templates.component.html',
@@ -10,12 +12,16 @@ import { map } from 'rxjs/operators';
 })
 export class TemplatesComponent implements OnInit {
   templates: any[];
-
+  user: User;
+  public loading = false;
   constructor(private location: Location,
      private router: Router,
+     private localUserService: LocalUserService,
      private templateService: TemplateService) { }
 
   ngOnInit(): void {
+    this.user = this.localUserService.getUser();
+    this.loading = true
     this.templateService.getFiles().snapshotChanges().pipe(
       map(changes =>
         // store the key
@@ -24,7 +30,7 @@ export class TemplatesComponent implements OnInit {
     ).subscribe(fileUploads => {
       this.templates = fileUploads;
       console.log(this.templates);
-      
+      this.loading= false
     });
    
   }
@@ -33,6 +39,9 @@ this.router.navigate(['admin/add-template'])
   }
   routeBack(){
     this.location.back()
+  }
+  previewTemplate(template){
+    this.router.navigate(['admin/template'], { state: { template: template} })
   }
 
 }

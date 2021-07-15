@@ -3,6 +3,7 @@ import{ Location} from '@angular/common'
 import { TemplateService } from 'src/app/shared/services/templates.service';
 import { Template } from 'src/app/shared/services/templates';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-create-templates',
   templateUrl: './create-templates.component.html',
@@ -13,7 +14,9 @@ export class CreateTemplatesComponent implements OnInit {
   currentFileUpload: Template;
   percentage: number;
   templateForm: FormGroup;
+  public loading = false;
   constructor(private location: Location,
+    private toastr: ToastrService, 
      private templateService: TemplateService,
      private fb: FormBuilder) { }
 
@@ -34,17 +37,29 @@ export class CreateTemplatesComponent implements OnInit {
   }
 
   upload(): void {
+    this.loading = true;
+    if(this.templateForm.valid){
     const file = this.selectedFiles.item(0);
     this.selectedFiles = undefined;
     this.currentFileUpload = new Template(file);
     this.templateService.pushFileToStorage(this.currentFileUpload,this.templateForm.value.name ).subscribe(
       percentage => {
-        this.percentage = Math.round(percentage);
+        this.toastr.success("template created success");
+        this.loading = false;
+        this.templateForm.reset();
+        // this.percentage = Math.round(percentage);
       },
       error => {
         console.log(error);
+        this.toastr.warning(error.message);
+        this.loading = false;
       }
     );
+    }else{
+      this.loading = false
+      this.toastr.warning('Check out all fields!');
+      
+    }
   }
 
 }

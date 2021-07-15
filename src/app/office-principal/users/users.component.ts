@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { User } from 'src/app/shared/services/user';
 import { UserService } from 'src/app/user.service';
 import {Location} from '@angular/common';
+import { LocalUserService } from 'src/app/shared/services/localUser.serice';
 
 @Component({
   selector: 'app-users',
@@ -17,7 +18,12 @@ export class UsersComponent implements OnInit {
   dtElement: DataTableDirective;
   dtOptions: any = {};
   dtTrigger: Subject<any> = new Subject();
-  constructor(private userService: UserService, private router: Router, private location: Location) { }
+  user: User;
+  public loading= false
+  constructor(private userService: UserService,
+     private router: Router,
+     private localUserService: LocalUserService,
+      private location: Location) { }
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full',
@@ -39,9 +45,11 @@ export class UsersComponent implements OnInit {
         }
       }
     };
+    this.user = this.localUserService.getUser()
     this.getUsers()
   }
   getUsers() {
+    this.loading = true
     this.userService.getUserList().subscribe(res => {
       const users = res.map( e => {
         return {
@@ -52,7 +60,8 @@ export class UsersComponent implements OnInit {
             this.Users = users.filter(s => s.data.role === 'student');
 
       console.log(users);
-      this.dtTrigger.next()
+      this.dtTrigger.next();
+      this.loading = false
     }); 
      
   }

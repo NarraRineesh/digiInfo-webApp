@@ -47,7 +47,8 @@ export class ProfileComponent implements OnInit {
     this.location.back();
   }
   logout(){
-    this.localUserService.destroyUser()
+    this.localUserService.destroyUser();
+    this.router.navigate(['/login'])
   }
 
 }

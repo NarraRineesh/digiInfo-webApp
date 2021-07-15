@@ -1,8 +1,8 @@
 
-<a  class="float" (click)="addUser()">
+<a  class="float" (click)="addUser()" *ngIf="user.role ==='admin'">
     <i class="fa fa-plus my-float"></i>
     </a>
-<div class="overall">
+<div class="overall" #customLoadingTemplate>
     <div class="row w-100 d-flex justify-content-center align-items-center text-white" style="position: absolute; top: 20px; z-index:2; margin-left: 0px;">
         <div class="col"><i class="fa fa-chevron-left" aria-hidden="true" (click)="routeBack()"></i></div>
         <div class="col text-center">
@@ -43,36 +43,4 @@
 		</div>
 
 	</div>
-</div><!-- 
-<div class="overall">
-<div class="container-fluid">
-    <div class="row my-4 text-white d-flex justify-content-center align-items-center">
-        <div class="col"><i class="fa fa-chevron-left" aria-hidden="true" (click)="routeBack()"></i></div>
-        <div class="col text-center">
-            <h1 class="m-0">Users</h1>
-        </div>
-        <div class="col"></div>
-    </div>
-    <div class="row wrapper">
-        <div class="col">
-            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col text-center">email</th>
-                    </tr> 
-                </thead>
-                <tbody>
-                    <tr *ngFor="let user of Users; index as i" (click)="onListItemClick(user.id)">
-                        <td style="color: black; cursor: pointer;">{{user.data.displayName}}
-                        </td>
-                        <td style="color: black; cursor: pointer;">{{user.data.email}}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    
-</div>
-</div> -->
+</div><ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
