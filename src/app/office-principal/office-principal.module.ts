@@ -19,6 +19,7 @@ import { SingleDepartmentComponent } from './department/single-department/single
 import { DepartmentUserCreateComponent } from './department/department-user-create/department-user-create.component';
 import { CreatePrincipalComponent } from './create-principal/create-principal.component';
 import { NgxLoadingModule } from 'ngx-loading';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { NgxLoadingModule } from 'ngx-loading';
     FormsModule,
     ReactiveFormsModule,
     DataTablesModule,
+    Ng2SearchPipeModule,
     OfficePrincipalRoutingModule,
     NgxDocViewerModule,
     NgxLoadingModule.forRoot({}),

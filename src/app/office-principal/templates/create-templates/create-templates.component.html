@@ -23,11 +23,13 @@
                     </div> -->
                     <div class="inputBox mb-4">
                         <label for="file">Template upload file :</label>
-                        <input type="file"  name="pwd"  class="form-control" formControlName="file" id="file" (change)="selectFile($event)">
+                        <input type="file"  name="pwd"  class="form-control" accept=".doc, .docx, .xls, .xlsx" formControlName="file" id="file" (change)="selectFile($event)">
                     </div>
+                    <div id="template" style="display: none;" [innerHtml]="eulaContent"></div>
+
                     <div class="inputBox mb-4">
-                        <input type="submit" class="btn btn-default btn-block" value="Submit" [disabled]="!selectedFiles"
-                        (click)="upload()">
+                        <input type="submit" class="btn btn-default btn-block" value="Submit" 
+                        (click)="exportHTML()">
                     </div>
                 </div>
 			</div>

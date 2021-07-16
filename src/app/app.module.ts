@@ -24,7 +24,6 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderInterceptor } from './components/loader/loader.interceptor';
 import { LoaderComponent } from './components/loader/loader.component';
-import { NgxDocViewerModule } from 'ngx-doc-viewer';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxLoadingModule } from 'ngx-loading';
 
@@ -52,7 +51,6 @@ import { NgxLoadingModule } from 'ngx-loading';
     AngularFireAuthModule,
     NgbModule,
     NgxSpinnerModule,
-    NgxDocViewerModule,
     Ng2SearchPipeModule
   ],
   providers: [AuthService,

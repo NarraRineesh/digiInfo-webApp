@@ -1,6 +1,7 @@
 {
   "projects": {
     "circulars": "jntu-circular",
-    "DigiInfo": "jntu-circular"
+    "DigiInfo": "jntu-circular",
+    "default": "jntu-circular"
   }
 }

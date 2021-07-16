@@ -13,6 +13,7 @@ import { User } from 'src/app/shared/services/user';
 export class DepartmentComponent implements OnInit {
   departments: Department[] = [];
   user: User;
+  searchText;
   loading= false;
   constructor(private location: Location,
      private router: Router,
@@ -39,9 +40,9 @@ export class DepartmentComponent implements OnInit {
         } as any;
       })
       console.log(this.departments);
-     
+      this.loading= false
     }); 
-    this.loading= false
+    
   }
   openSingleDepartment(department: string){
 console.log(department);

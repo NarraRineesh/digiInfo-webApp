@@ -4,6 +4,8 @@ import { TemplateService } from 'src/app/shared/services/templates.service';
 import { Template } from 'src/app/shared/services/templates';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { HttpClient } from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-create-templates',
   templateUrl: './create-templates.component.html',
@@ -15,12 +17,19 @@ export class CreateTemplatesComponent implements OnInit {
   percentage: number;
   templateForm: FormGroup;
   public loading = false;
+  eulaContent: any;
   constructor(private location: Location,
-    private toastr: ToastrService, 
+    private toastr: ToastrService,
+    private sanitizer: DomSanitizer, 
      private templateService: TemplateService,
-     private fb: FormBuilder) { }
+     private fb: FormBuilder) { 
+      
+     }
 
   ngOnInit(): void {
+    fetch('/assets/temp.html').then(res => res.text()).then(data => {
+      this.eulaContent = this.sanitizer.bypassSecurityTrustHtml(data);
+    })
     this.myForm()
   }
   myForm() {
@@ -34,6 +43,7 @@ export class CreateTemplatesComponent implements OnInit {
   }
   selectFile(event): void {
     this.selectedFiles = event.target.files;
+    
   }
 
   upload(): void {
@@ -61,5 +71,22 @@ export class CreateTemplatesComponent implements OnInit {
       
     }
   }
+  exportHTML(){
+    this.loading = true
+    var header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' "+
+         "xmlns:w='urn:schemas-microsoft-com:office:word' "+
+         "xmlns='http://www.w3.org/TR/REC-html40'>"+
+         "<head><meta charset='utf-8'><title>Email from DigiInfo</title></head><body>";
+    var footer = "</body></html>";
+    var sourceHTML = header+document.getElementById("template").innerHTML+footer;
+    var source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(sourceHTML);
+    var fileDownload = document.createElement("a");
+    document.body.appendChild(fileDownload);
+    fileDownload.href = source;
+    fileDownload.download = 'template_sample.doc';
+    fileDownload.click();
+    this.loading = false
+    document.body.removeChild(fileDownload);
+ }
 
 }

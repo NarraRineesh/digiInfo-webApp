@@ -14,13 +14,10 @@ import { User } from 'src/app/shared/services/user';
 export class SingleDepartmentComponent implements OnInit {
 
   Users: any[] =[];
-  @ViewChild(DataTableDirective)
-  dtElement: DataTableDirective;
-  dtOptions: any = {};
   department: string
-  dtTrigger: Subject<any> = new Subject();
   user: User;
-  loading = false
+  loading = false;
+  searchText;
   constructor(private userService: UserService, 
     private router: Router, 
     private localUserService: LocalUserService,
@@ -29,26 +26,7 @@ export class SingleDepartmentComponent implements OnInit {
     this.department = this.route.snapshot.params.department;
   }
   ngOnInit(): void {
-    this.dtOptions = {
-      pagingType: 'full',
-      pageLength: 10,
-      dom: 'frtip',
-      searching: false,
-      language: {
-        "search": "",
-        searchPlaceholder: "Search...",
-        info: "showing _END_ out of _TOTAL_ Users Found",
-        infoEmpty: "0 Users Found",
-      },
-      oLanguage: {
-        "oPaginate": {
-          "sFirst": "First", // This is the link to the first page
-          "sPrevious": "<i class='fa fa-arrow-left' aria-hidden='true'></i>", // This is the link to the previous page
-          "sNext": "<i class='fa fa-arrow-right' aria-hidden='true'></i>", // This is the link to the next page
-          "sLast": "Last" // This is the link to the last page
-        }
-      }
-    };
+    
     this.user = this.localUserService.getUser()
     this.getUsers()
   }
@@ -64,15 +42,11 @@ export class SingleDepartmentComponent implements OnInit {
       this.Users = users.filter(s => s.data.department === this.department);
 this.loading= false
       console.log(this.Users);
-      this.dtTrigger.next()
+      
     }); 
      
   }
-  search(term) {
-      this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
-        dtInstance.search(term).draw()
-        });
-  }
+  
   onListItemClick(id: string){
     console.log(id);
     this.router.navigate(['admin/user/'+ id])

@@ -13,17 +13,17 @@
 	<div class="wrapper">
 		<div class="card">
 			<div class="questionCard px-3">
-				<input type="search" name="" id="" placeholder="Search students" (keyup)='search($event.target.value)'>
+				<input type="search" name="" id="" placeholder="Search students" [(ngModel)]="searchText">
 			</div>
-            <!-- <div class="no-tem mt-3" *ngIf="Users.length === 0">
+            <div class="no-tem mt-3" *ngIf="Users.length === 0 && !loading">
                 <div class="content">
                   <img src="../assets/Saly-19.png" width="250">
-                  <p>No Students found. Create student.
+                  <p>No Students found.
                   </p>
                 </div>
-            </div> -->
+            </div>
             <div *ngIf="Users.length > 0">
-                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table">
+                <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">Name</th>
@@ -31,7 +31,7 @@
                         </tr> 
                     </thead>
                     <tbody>
-                        <tr *ngFor="let user of Users; index as i" (click)="onListItemClick(user.id)">
+                        <tr *ngFor="let user of Users | filter:searchText" (click)="onListItemClick(user.id)">
                             <td style="color: black; cursor: pointer;">{{user.data.displayName}}
                             </td>
                             <td style="color: black; cursor: pointer;">{{user.data.email}}

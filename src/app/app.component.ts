@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LocalUserService } from './shared/services/localUser.serice';
+import { User } from './shared/services/user';
 import { UserService } from './user.service';
 
 @Component({
@@ -9,27 +11,20 @@ import { UserService } from './user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public userForm: FormGroup;
-  Users: any[];
-
-  constructor(
-    public userService: UserService,
-    public formBuilder: FormBuilder,
-    public router: Router
-  ) { 
-    this.userForm = this.formBuilder.group({
-      name: [''],
-      email: [''],
-      contact: ['']
-    })      
+  user: User;
+  constructor(private localService: LocalUserService, private router: Router){}
+  ngOnInit(){
+   this.user = this.localService.getUser()
+   if(this.user.uid = null){
+     this.router.navigate(['/login'])
+   }
+   else{
+     if(this.user.role === 'student'){
+     this.router.navigate(['/subscriber'])
+     }
+     else{
+       this.router.navigate(['/admin'])
+     }
+   }
   }
-
-  ngOnInit(): void {
-    
-  }
-
-  onSubmit() {
-    this.userService.createUser(this.userForm.value);
-    // this.router.navigate(['list-users']); 
-   };
 }

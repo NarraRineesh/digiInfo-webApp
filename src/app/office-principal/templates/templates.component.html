@@ -12,16 +12,16 @@
 	<div class="wrapper">
 		<div class="card">
 			<div class="questionCard px-3">
-				<input type="search" name="" id="" placeholder="Search templates">
+				<input type="search" [(ngModel)]="searchText" placeholder="Search templates">
 			</div>
-            <!-- <div class="no-tem mt-3">
+            <div class="no-tem mt-3" *ngIf="templates.length === 0 && !loading">
                 <div class="content">
                   <img src="../assets/Saly-19.png" width="250">
                   <p>No templates found. Create your first template.
                   </p>
                 </div>
-              </div> -->
-			<div class="px-lg-4 px-sm-2 px-md-2 container-fluid question" *ngFor="let template of templates">
+              </div>
+			<div class="px-lg-4 px-sm-2 px-md-2 container-fluid question" *ngFor="let template of templates | filter:searchText">
 				<div class="card-list" (click)="previewTemplate(template)">
 					<div class="row">
 						<div class="col">

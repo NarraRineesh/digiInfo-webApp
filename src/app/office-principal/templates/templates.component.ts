@@ -11,8 +11,9 @@ import { User } from 'src/app/shared/services/user';
   styleUrls: ['./templates.component.css']
 })
 export class TemplatesComponent implements OnInit {
-  templates: any[];
+  templates: any[] =[];
   user: User;
+  searchText;
   public loading = false;
   constructor(private location: Location,
      private router: Router,
