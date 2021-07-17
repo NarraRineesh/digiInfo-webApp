@@ -1,3 +1,21 @@
 <ngx-doc-viewer
-url="https://file-examples-com.github.io/uploads/2017/02/file-sample_100kB.docx" viewer="google"  style="width:100%;height:93vh;"
+[url]="template.val.url" viewer="google"  style="width:100%;height:93vh;"
 ></ngx-doc-viewer>
+<div class="row">
+    <div class="col">
+        <h3 class="text-center mt-2"><i class="fa fa-share-square mr-2" aria-hidden="true"></i> Share Template To :</h3>
+    </div>
+</div>
+<div class="formGroup d-flex p-3 justify-content-start" style="flex-direction: column;">
+    <label *ngFor="let department of departments; let i = index" class="m-1">
+      <input type="checkbox" (click)="selectedClass(department.data.name)" />
+      {{department.data.name}}</label>
+      <label class="m-1">
+        <input type="checkbox" (click)="selectedClass('student')" />
+        Students</label>
+</div>
+<div class="row my-3">
+    <div class="col d-flex justify-content-center">
+        <button class="btn btn-primary">Send To Principal</button>
+    </div>
+</div>

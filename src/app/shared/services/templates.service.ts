@@ -11,7 +11,7 @@ import { Template } from './templates';
 })
 export class TemplateService {
 private basePath = '/templates';
-  constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) { }
+  constructor(private db: AngularFireDatabase, private storage: AngularFireStorage,) { }
   pushFileToStorage(template: Template, name: string): Observable<number> {
     const filePath = `${this.basePath}/${name}`;
     const storageRef = this.storage.ref(filePath);
@@ -53,5 +53,11 @@ private basePath = '/templates';
   private deleteFileStorage(name: string): void {
     const storageRef = this.storage.ref(this.basePath);
     storageRef.child(name).delete();
+  }
+   updateTemplate( key, value: any) {
+    return this.db
+      .list(this.basePath)
+      .update(key, value)
+      
   }
 }
