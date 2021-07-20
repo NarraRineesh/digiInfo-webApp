@@ -39,16 +39,10 @@ private location: Location,
              this.userData = userRef.data()
             console.log("userRef", userRef.data());
             this.localUserService.setUser(this.userData);
-            if(this.userData.role === "student") {
+            if(this.userData.role === "student" || this.userData.role === "staff" ) {
               this.ngZone.run(() => this.router.navigate(["/subscriber"]));
             }
-            if(this.userData.role === "staff") {
-              this.ngZone.run(() => this.router.navigate(["/admin"]));
-            }
-            if(this.userData.role === "principal") {
-              this.ngZone.run(() => this.router.navigate(["/admin"]));
-            }
-            if(this.userData.role === "admin") {
+            if(this.userData.role === "principal" ||this.userData.role === "admin" || this.userData.role === "hod" || this.userData.role === "a-hod") {
               this.ngZone.run(() => this.router.navigate(["/admin"]));
             }
           })

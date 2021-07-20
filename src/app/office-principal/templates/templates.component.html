@@ -1,4 +1,4 @@
-<a  class="float" (click)="addTemplate()" *ngIf="user.role === 'admin'">
+<a  class="float" (click)="addTemplate()" *ngIf="user.role === 'admin' || user.role === 'a-hod'">
     <i class="fa fa-plus my-float"></i>
     </a>
 <div class="overall" #customLoadingTemplate>
@@ -17,19 +17,46 @@
             <div class="no-tem mt-3" *ngIf="templates.length === 0 && !loading">
                 <div class="content">
                   <img src="../assets/Saly-19.png" width="250">
-                  <p>No templates found. Create your first template.
+                  <p>No templates found.
                   </p>
                 </div>
               </div>
+              <div *ngIf ="user.role === 'admin' || user.role === 'a-hod'"> 
 			<div class="px-lg-4 px-sm-2 px-md-2 container-fluid question" *ngFor="let template of templates | filter:searchText">
 				<div class="card-list" (click)="previewTemplate(template)">
 					<div class="row">
 						<div class="col">
-							<h4 class="m-0 p-3" style="font-size: large;">{{template.val.name}}</h4>
+							<h4 class="m-0 p-3" style="font-size: large;">{{template.name}}</h4>
 						</div>
 					</div>
 				</div>
 			</div>
+        </div>
+        <div *ngIf ="user.role === 'principal' || user.role === 'hod'"> 
+            <label *ngIf="waitingTemplates.length > 0" class="mt-3">Waiting for Approval</label>
+			<div class="px-lg-4 px-sm-2 px-md-2 container-fluid question" *ngFor="let template of waitingTemplates | filter:searchText">
+				<div class="card-list" (click)="previewTemplate(template)">
+					<div class="row">
+						<div class="col">
+							<h4 class="m-0 p-3" style="font-size: large;">{{template.name}}</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+        <hr>
+        <div *ngIf ="user.role === 'principal' || user.role === 'hod'"> 
+            <label *ngIf="approvedTemplates.length > 0" class="mt-3">Approved</label>
+			<div class="px-lg-4 px-sm-2 px-md-2 container-fluid question" *ngFor="let template of approvedTemplates | filter:searchText">
+				<div class="card-list" (click)="previewTemplate(template)">
+					<div class="row">
+						<div class="col">
+							<h4 class="m-0 p-3" style="font-size: large;">{{template.name}}</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
 		</div>
 	</div>
 </div>

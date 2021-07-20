@@ -1,21 +1,43 @@
 <ngx-doc-viewer
-[url]="template.val.url" viewer="google"  style="width:100%;height:93vh;"
+[url]="template.url" viewer="google"  style="width:100%;height:93vh;"
 ></ngx-doc-viewer>
-<div class="row">
+<div [hidden]="template.waitingForApproval">
+<div class="row" *ngIf="user.role === 'admin' || user.role ==='a-hod'">
     <div class="col">
         <h3 class="text-center mt-2"><i class="fa fa-share-square mr-2" aria-hidden="true"></i> Share Template To :</h3>
     </div>
 </div>
-<div class="formGroup d-flex p-3 justify-content-start" style="flex-direction: column;">
+<div class="formGroup d-flex p-3 justify-content-start" style="flex-direction: column;" *ngIf="user.role === 'admin'">
     <label *ngFor="let department of departments; let i = index" class="m-1">
-      <input type="checkbox" (click)="selectedClass(department.data.name)" />
+      <input type="checkbox" (click)="selectedClass(department.data.name, i)" />
       {{department.data.name}}</label>
-      <label class="m-1">
-        <input type="checkbox" (click)="selectedClass('student')" />
-        Students</label>
 </div>
-<div class="row my-3">
+<div class="row my-3" *ngIf="user.role === 'admin'">
     <div class="col d-flex justify-content-center">
-        <button class="btn btn-primary">Send To Principal</button>
+        <button class="btn btn-primary" (click)="sendTo()">Send To Principal</button>
+    </div>
+</div>
+<div class="formGroup d-flex p-3 justify-content-start" style="flex-direction: column;" *ngIf="user.role === 'a-hod'">
+    <div class="row g-0">
+        <div class="col-2 d-flex justify-content-center"> <input type="checkbox" (click)="selectedClass(user.department, 0)" /></div>
+    <div class="col-10">
+        <label>{{user.department}}</label>
+    </div>
+    </div>
+</div>
+<div class="row my-3" *ngIf="user.role === 'a-hod'">
+    <div class="col d-flex justify-content-center">
+        <button class="btn btn-primary" (click)="sendTo()">Send To HOD</button>
+    </div>
+</div>
+</div>
+<div *ngIf="template.approved === false">
+    <div class="row my-3" *ngIf="user.role === 'hod' || user.role === 'principal'">
+        <div class="col d-flex justify-content-center">
+            <button class="btn btn-primary" disabled>Add Signature</button>
+        </div>
+        <div class="col d-flex justify-content-center">
+            <button class="btn btn-primary" (click)="ApproveTemplate()">Approve</button>
+        </div>
     </div>
 </div>

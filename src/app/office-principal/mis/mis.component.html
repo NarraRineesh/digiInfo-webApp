@@ -7,7 +7,7 @@
         </div>
         <div class="col"></div>
     </div>
-	<div class="wrapper">
+	<div class="wrapper" #customLoadingTemplate>
 		<div class="card">
 			<div class="questionCard px-3">
 				<input type="search" name="" id="" placeholder="Search MIS">
@@ -45,3 +45,4 @@
 
 	</div>
 </div>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>

@@ -3,7 +3,7 @@
     <div class="row w-100 d-flex justify-content-center align-items-center text-white" style="position: absolute; top: 20px; z-index:2; margin-left: 0px;">
         <div class="col-2"><i class="fa fa-chevron-left" aria-hidden="true" (click)="routeBack()"></i></div>
         <div class="col-8 text-center">
-            <h2 class="m-0">Add staff</h2>
+            <h2 class="m-0">Add Users</h2>
         </div>
         <div class="col-2"></div>
     </div>
@@ -32,6 +32,16 @@
                     <div class="inputBox mb-4">
                         <label for="number">Mobile Number :</label>
                         <input type="number"  name="cpwd"  class="form-control" formControlName="mobileNumber" id="number" >
+                    </div>
+                    <div class="inputBox mb-4">
+                        <label for="number">role :</label>
+                        <select  formControlName="role">
+                            <option value="" selected disabled>--choose role--</option>
+                            <option value="hod">Head of department</option>
+                            <option value="a-hod">Assistant HOD </option>
+                            <option value="staff">Assistant Professor </option>
+                            <option value="student">Student</option>
+                        </select>
                     </div>
                    
                     <div class="inputBox mb-4">

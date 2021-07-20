@@ -5,6 +5,7 @@ import { TemplateService } from 'src/app/shared/services/templates.service';
 import { map } from 'rxjs/operators';
 import { LocalUserService } from 'src/app/shared/services/localUser.serice';
 import { User } from 'src/app/shared/services/user';
+import { Template } from 'src/app/shared/services/templates';
 @Component({
   selector: 'app-templates',
   templateUrl: './templates.component.html',
@@ -15,24 +16,59 @@ export class TemplatesComponent implements OnInit {
   user: User;
   searchText;
   public loading = false;
+  waitingTemplates: Template[] =[];
+  approvedTemplates: Template[]= [];
   constructor(private location: Location,
      private router: Router,
      private localUserService: LocalUserService,
-     private templateService: TemplateService) { }
+     private templateService: TemplateService) {
+       this.user = this.localUserService.getUser()
+      }
 
   ngOnInit(): void {
-    this.user = this.localUserService.getUser();
     this.loading = true
-    this.templateService.getFiles().snapshotChanges().pipe(
-      map(changes =>
-        // store the key
-        changes.map(c => ({ key: c.payload.key, val:c.payload.val() }))
-      )
-    ).subscribe(fileUploads => {
-      this.templates = fileUploads;
-      console.log(this.templates);
-      this.loading= false
-    });
+    if(this.user.role === 'admin' || this.user.role === 'principal'){
+      this.templateService.getFiles().snapshotChanges().pipe(
+        map(changes =>
+          changes.map(c => ({ key: c.payload.key, ...c.payload.val() as any }))
+        )
+      ).subscribe(fileUploads => {
+        this.templates = fileUploads.filter(item => item.department === 'All').reverse();
+        console.log(this.templates);
+        this.loading= false
+      });
+    }
+    if(this.user.role === 'a-hod'){
+      this.templateService.getFiles().snapshotChanges().pipe(
+        map(changes =>
+          
+          changes.map(c => ({ key: c.payload.key, ...c.payload.val() as any }))
+        )
+      ).subscribe(fileUploads => {
+        const data = fileUploads;
+        
+        this.templates =data
+        .filter(item => item.department === this.user.department).reverse()
+        console.log(this.templates);
+        this.loading= false
+      });
+    }
+    if(this.user.role === 'hod'){
+      this.templateService.getFiles().snapshotChanges().pipe(
+        map(changes =>
+          changes.map(c => ({ key: c.payload.key, ...c.payload.val() as any }))
+        )
+      ).subscribe(fileUploads => {
+        const data = fileUploads;
+        this.templates =data.filter(item => item.department === this.user.department).reverse();
+        console.log(this.templates);
+       this.waitingTemplates = this.templates.filter(item => item.waitingForApproval === true  && item.approved === false)
+       this.approvedTemplates = this.templates.filter(item => item.waitingForApproval === true && item.approved === true)
+        this.loading= false
+      });
+    }
+    
+    
    
   }
   addTemplate(){

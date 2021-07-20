@@ -33,7 +33,7 @@ export class DepartmentUserCreateComponent implements OnInit {
         email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
         password: ['', [Validators.required]],
         confirm_password: ['', [Validators.required]],
-        role: ['staff'],
+        role: ['',[Validators.required]],
         mobileNumber: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
         department: this.department
       },

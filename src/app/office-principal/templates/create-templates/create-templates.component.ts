@@ -6,6 +6,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
+import { LocalUserService } from 'src/app/shared/services/localUser.serice';
+import { User } from 'src/app/shared/services/user';
 @Component({
   selector: 'app-create-templates',
   templateUrl: './create-templates.component.html',
@@ -18,12 +20,15 @@ export class CreateTemplatesComponent implements OnInit {
   templateForm: FormGroup;
   public loading = false;
   eulaContent: any;
+  department: string ='All'
+  user: User;
   constructor(private location: Location,
     private toastr: ToastrService,
-    private sanitizer: DomSanitizer, 
+    private sanitizer: DomSanitizer,
+    private locaUserService: LocalUserService, 
      private templateService: TemplateService,
      private fb: FormBuilder) { 
-      
+      this.user = this.locaUserService.getUser()
      }
 
   ngOnInit(): void {
@@ -52,19 +57,34 @@ export class CreateTemplatesComponent implements OnInit {
     const file = this.selectedFiles.item(0);
     this.selectedFiles = undefined;
     this.currentFileUpload = new Template(file);
-    this.templateService.pushFileToStorage(this.currentFileUpload,this.templateForm.value.name ).subscribe(
-      percentage => {
-        this.toastr.success("template created success");
-        this.loading = false;
-        this.templateForm.reset();
-        // this.percentage = Math.round(percentage);
-      },
-      error => {
-        console.log(error);
-        this.toastr.warning(error.message);
-        this.loading = false;
-      }
-    );
+    if(this.user.role === 'admin'){
+      this.templateService.pushFileToStorage(this.currentFileUpload,this.templateForm.value.name, this.department ).subscribe(
+        percentage => {
+          this.toastr.success("template created success");
+          this.loading = false;
+          this.templateForm.reset();
+        },
+        error => {
+          console.log(error);
+          this.toastr.warning(error.message);
+          this.loading = false;
+        }
+      );
+    }
+    if(this.user.role === 'a-hod'){
+      this.templateService.pushFileToStorage(this.currentFileUpload,this.templateForm.value.name, this.user.department ).subscribe(
+        percentage => {
+          this.toastr.success("template created success");
+          this.loading = false;
+          this.templateForm.reset();
+        },
+        error => {
+          console.log(error);
+          this.toastr.warning(error.message);
+          this.loading = false;
+        }
+      );
+    }
     }else{
       this.loading = false
       this.toastr.warning('Check out all fields!');

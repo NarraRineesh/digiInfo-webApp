@@ -12,7 +12,7 @@ import { Template } from './templates';
 export class TemplateService {
 private basePath = '/templates';
   constructor(private db: AngularFireDatabase, private storage: AngularFireStorage,) { }
-  pushFileToStorage(template: Template, name: string): Observable<number> {
+  pushFileToStorage(template: Template, name: string, department: string): Observable<number> {
     const filePath = `${this.basePath}/${name}`;
     const storageRef = this.storage.ref(filePath);
     const uploadTask = this.storage.upload(filePath, template.file);
@@ -22,6 +22,9 @@ private basePath = '/templates';
         storageRef.getDownloadURL().subscribe(downloadURL => {
           template.url = downloadURL;
           template.name = name;
+          template.department =department;
+          template.approved = false;
+          template.waitingForApproval= false;
           this.saveFileData(template);
         });
       })
@@ -37,6 +40,7 @@ private basePath = '/templates';
   getFiles() {
     return this.db.list(this.basePath)
   }
+  
 
   deleteFile(template: Template): void {
     this.deleteFileDatabase(template.key)
@@ -57,7 +61,6 @@ private basePath = '/templates';
    updateTemplate( key, value: any) {
     return this.db
       .list(this.basePath)
-      .update(key, value)
-      
+      .update(key, value) 
   }
 }

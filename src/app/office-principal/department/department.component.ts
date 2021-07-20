@@ -32,16 +32,30 @@ export class DepartmentComponent implements OnInit {
   }
   getDepartmentData(){
     this.loading = true
-    this.departmentService.getDepartmentList().subscribe(res => {
-      this.departments = res.map( e => {
-        return {
-          id: e.payload.doc.id,
-          data:e.payload.doc.data()
-        } as any;
-      })
-      console.log(this.departments);
-      this.loading= false
-    }); 
+    if(this.user.role === 'admin' || this.user.role === 'principal'){
+      this.departmentService.getDepartmentList().subscribe(res => {
+        this.departments = res.map( e => {
+          return {
+            id: e.payload.doc.id,
+            data:e.payload.doc.data()
+          } as any;
+        })
+        console.log(this.departments);
+        this.loading= false
+      }); 
+    }
+    if(this.user.role === 'a-hod' || this.user.role === 'hod'){
+      this.departmentService.getDepartmentList().subscribe(res => {
+        this.departments = res.map( e => {
+          return {
+            id: e.payload.doc.id,
+            data:e.payload.doc.data()
+          } as any;
+        }).filter(item => item.data.name === this.user.department)
+        console.log(this.departments);
+        this.loading= false
+      }); 
+    }
     
   }
   openSingleDepartment(department: string){
