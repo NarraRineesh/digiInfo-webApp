@@ -21,22 +21,22 @@
                 <span>Templates</span>
             </div>
         </div>
-    </div>
-    <div class="row mt-2">
-        <div class="col-6">
+    <!-- </div> -->
+    <!-- <div class="row mt-2"> -->
+        <div class="col-6" [hidden]="user.role === 'a-hod'">
             <div class="box"  (click)="route('department')">
                 <i class="fa fa-h-square" aria-hidden="true"></i>
                 <span>Deparment</span>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-6"  [hidden]="user.role === 'principal' || user.role === 'a-hod'">
             <div class="box"  (click)="route('users')">
                 <i class="fa fa-users" aria-hidden="true"></i>
                 <span>Students</span>
             </div>
         </div>
-    </div>
-    <div class="row mt-2">
+    <!-- </div> -->
+    <!-- <div class="row mt-2"> -->
         <div class="col-6" *ngIf="user.role ==='admin'">
             <div class="box" (click)="route('principal')">
                 <i class="fa fa-university" aria-hidden="true"></i>

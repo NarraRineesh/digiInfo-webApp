@@ -67,6 +67,20 @@ export class TemplatesComponent implements OnInit {
         this.loading= false
       });
     }
+    if(this.user.role === 'principal'){
+      this.templateService.getFiles().snapshotChanges().pipe(
+        map(changes =>
+          changes.map(c => ({ key: c.payload.key, ...c.payload.val() as any }))
+        )
+      ).subscribe(fileUploads => {
+        const data = fileUploads;
+        this.templates =data.filter(item => item.department === 'All').reverse();
+        console.log(this.templates);
+       this.waitingTemplates = this.templates.filter(item => item.waitingForApproval === true  && item.approved === false)
+       this.approvedTemplates = this.templates.filter(item => item.waitingForApproval === true && item.approved === true)
+        this.loading= false
+      });
+    }
     
     
    

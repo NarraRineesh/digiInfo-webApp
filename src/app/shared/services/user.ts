@@ -8,6 +8,6 @@ export interface User {
     photoURL: string,
     emailVerified: boolean,
     role: string;
-    mobileNumber: number,
+    mobilenumber: number,
     about: string
 }

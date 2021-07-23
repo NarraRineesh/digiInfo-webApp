@@ -7,6 +7,8 @@ import { TemplateService } from 'src/app/shared/services/templates.service';
 import { User } from 'src/app/shared/services/user';
 import { UserService } from 'src/app/user.service';
 import { Iparticipant, Template } from '../template';
+import{Location} from '@angular/common'
+
 
 @Component({
   selector: 'app-preview-template',
@@ -22,6 +24,7 @@ export class PreviewTemplateComponent implements OnInit {
   users: any[] =[];
 
   constructor(private router:Router,
+    private location: Location,
     private departmentService: DepartmentService,
     private mis: MisService,
     private userService: UserService,
@@ -104,5 +107,7 @@ export class PreviewTemplateComponent implements OnInit {
     this.templateService.updateTemplate(this.template.key, this.template)
     this.mis.createMIS(this.template)
   }
-
+  routeBack(){
+    this.location.back()
+  }
 }

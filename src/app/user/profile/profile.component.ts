@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit {
   userId: string;
   userName: string;
   userEmail: string;
+  userMobile;
   userRole: string;
   showCase: boolean = false
   constructor(private userService: UserService,
@@ -32,6 +33,7 @@ export class ProfileComponent implements OnInit {
       console.log(this.User)
       this.userName= this.User.displayName;
       this.userEmail = this.User.email;
+      this.userMobile = this.User.mobilenumber
       this.userRole = this.User.role
       
     }); 

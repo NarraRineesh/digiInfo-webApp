@@ -1,5 +1,12 @@
+<div class="row w-100 d-flex justify-content-center align-items-center" style="position: absolute; top: 20px; z-index:2; margin-left: 0px;">
+    <div class="col"><i class="fa fa-chevron-left" aria-hidden="true" (click)="routeBack()"></i></div>
+    <div class="col text-center">
+        <h2 class="m-0">Preview</h2>
+    </div>
+    <div class="col"></div>
+</div>
 <ngx-doc-viewer
-[url]="template.url" viewer="google"  style="width:100%;height:93vh;"
+[url]="template.url" viewer="google"  style="width:100%;height:73vh;"
 ></ngx-doc-viewer>
 <div [hidden]="template.waitingForApproval">
 <div class="row" *ngIf="user.role === 'admin' || user.role ==='a-hod'">
@@ -8,9 +15,25 @@
     </div>
 </div>
 <div class="formGroup d-flex p-3 justify-content-start" style="flex-direction: column;" *ngIf="user.role === 'admin'">
-    <label *ngFor="let department of departments; let i = index" class="m-1">
+    <!-- <label *ngFor="let department of departments; let i = index" class="m-1">
       <input type="checkbox" (click)="selectedClass(department.data.name, i)" />
-      {{department.data.name}}</label>
+      {{department.data.name}}</label> -->
+      <label  class="m-1">
+        <input type="checkbox"  />
+        Students</label>
+        <label  class="m-1">
+            <input type="checkbox"  />
+            Faculty</label>
+        <label  class="m-1">
+            <input type="checkbox"  />
+            HODs</label>
+            <label  class="m-1">
+                <input type="checkbox"  />
+                Upload to website</label>
+                <label  class="m-1">
+                    <input type="checkbox"  />
+                    Download</label>
+
 </div>
 <div class="row my-3" *ngIf="user.role === 'admin'">
     <div class="col d-flex justify-content-center">
