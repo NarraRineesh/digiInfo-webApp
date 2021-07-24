@@ -46,7 +46,9 @@ export class UsersComponent implements OnInit {
  
   onListItemClick(id: string){
     console.log(id);
-    this.router.navigate(['admin/user/'+ id])
+    // if(this.user.role === 'admin'){
+    this.router.navigate(['admin/user/'+ id]);
+    // }
   }
   addUser(){
     this.router.navigate(['admin/user-create'])

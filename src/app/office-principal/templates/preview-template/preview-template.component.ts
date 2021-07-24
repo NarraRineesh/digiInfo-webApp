@@ -70,7 +70,7 @@ export class PreviewTemplateComponent implements OnInit {
   }
   sendTo(){
     this.template.waitingForApproval=true;
-    // this.template.participants = this.participantsSelected
+    this.template.participants = this.participantsSelected
     this.templateService.updateTemplate(this.template.key, this.template)
   }
   selectedClass(name, index) {
@@ -100,6 +100,34 @@ export class PreviewTemplateComponent implements OnInit {
     }
     console.log(this.participantsSelected);
 
+  }
+  selectStream(name, index){
+    this.classCheck[index] = !this.classCheck[index];
+    if (this.classCheck[index] == true) {
+      console.log("add called",name,index);
+      const users = this.users.filter(item => item.data.role === name)
+      users.forEach(element => {
+        const data ={
+          email: element.data.email,
+          view: false
+        }
+        this.participantsSelected.push(data)
+      });
+    } else {
+      console.log("remove called");
+      const users = this.users.filter(item => item.data.role === name)
+      users.forEach(element => {
+        console.log(element);
+        
+        for (let i = 0; i < this.participantsSelected.length; i++) {
+          if (element.data.email == this.participantsSelected[i].email) {
+            this.participantsSelected.splice(i);
+          }
+        }
+      });
+    }
+    console.log(this.participantsSelected);
+    
   }
   ApproveTemplate(){
     this.template.waitingForApproval=true

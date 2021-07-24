@@ -10,37 +10,24 @@
 	<div class="wrapper" #customLoadingTemplate>
 		<div class="card">
 			<div class="questionCard px-3">
-				<input type="search" name="" id="" placeholder="Search MIS">
+				<input type="search" [(ngModel)]="searchText" placeholder="Search MIS">
 			</div>
-            <div class="no-tem mt-3">
+            <div class="no-tem mt-3" *ngIf="Mis.length === 0">
                 <div class="content">
                   <img src="../assets/Saly-19.png" width="250">
                   <p>No MIS found. Any updates we will intimate you.
                   </p>
                 </div>
               </div>
-			<!-- <div class="px-lg-4 px-sm-2 px-md-2 container-fluid question">
-				<div class="card-list">
+			  <div class="px-lg-4 px-sm-2 px-md-2 container-fluid question" *ngFor="let template of Mis | filter:searchText">
+				<div class="card-list" (click)="previewTemplate(template.data)">
 					<div class="row">
-						<div class="col avatar-wrapper"></div>
 						<div class="col">
-							<h3 class="m-0">hello 1</h3>
+							<h4 class="m-0 p-3" style="font-size: large;">{{template.data.name}}</h4>
 						</div>
 					</div>
 				</div>
-				<div class="card-list">
-					<div class="row">
-						<div class="col avatar-wrapper"></div>
-						<div class="col">hello 1</div>
-					</div>
-				</div>
-				<div class="card-list">
-					<div class="row">
-						<div class="col avatar-wrapper"></div>
-						<div class="col">hello 1</div>
-					</div>
-				</div>
-			</div> -->
+			</div>
 		</div>
 
 	</div>

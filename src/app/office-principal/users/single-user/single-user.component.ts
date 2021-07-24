@@ -14,7 +14,7 @@ export class SingleUserComponent implements OnInit {
   userId: string;
   userName: string;
   userEmail: string;
-  userRole: string;
+  userRole: number;
   showCase: boolean = false
   constructor(private userService: UserService,
      private route: ActivatedRoute,
@@ -27,18 +27,20 @@ export class SingleUserComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getUserDoc(this.userId).subscribe(res => {
       this.User = res as any
-      this.userName= this.User.displayName;
-      this.userEmail = this.User.email;
-      this.userRole = this.User.role
-      
     }); 
   }
   editUser(){
     this.showCase = true
   }
   updateUser(){
-    this.userService.updateUser(this.User.uid,this.User);
-    this.toastr.success(`${this.userName} updated sucess`)
+    console.log(this.User);
+    this.userService.updateUser(this.userId,this.User);
+    this.toastr.success(`${this.User.displayName} updated success`)
+  }
+  deleteUser(){
+    this.userService.deleteUser(this.User);
+    this.toastr.success(`${this.User.displayName} deleted success`)
+    this.location.back();
   }
   routeBack(){
     this.location.back();

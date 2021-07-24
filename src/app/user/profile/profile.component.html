@@ -34,7 +34,7 @@
                                 <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Settings</h6>
                                 <div class="row">
                                     <div class="col-6" *ngIf="User.role === 'principal'">
-                                        <button class="btn btn-primary">
+                                        <button class="btn btn-primary" (click)="openEdit()">
                                             Edit profile
                                         </button>
                                     </div>

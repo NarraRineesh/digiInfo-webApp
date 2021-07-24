@@ -1,16 +1,67 @@
-.wrapper {
-    background: #F7F9FD;
-  }
-  .wrapper .inputBox label {
-    color: #787878;
-  }
-  .wrapper .inputBox input {
-    border-radius: 40px;
-    box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(0, 0, 0, 0.1);
-    border: 0 none;
-    background: #ebf5fc;
-  }
-  .wrapper .inputBox input[type=submit] {
+.overall {
+  width: 100vw;
+  height: 100vh;  
+  margin: 0 auto; 
+ overflow-x: hidden;
+  background: linear-gradient(
+    163.43deg,
+    #eeecff -8.91%,
+    #ffffff 99.17%
+  ) !important;
+}
+
+.card {
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(242.68deg, #feb665 37.28%, #f66eb4 76.65%);
+  position: absolute;
+  top: 0;
+}
+
+.questionCard {
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: auto;
+  background-color: #fff;
+  position: relative;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 4px 8px 1px gray;
+  -moz-box-shadow: 0px 4px 8px 1px gray;
+  box-shadow: 0px 4px 8px 1px gray;
+  font-size: 16px;
+  text-align: center;
+  vertical-align: middle;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 123px;
+  padding: 10px;
+}
+
+
+.loginWrapper{
+  background: white;
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+}
+
+.loginWrapper .inputBox label {
+  color: #000000;
+  margin-bottom: 15px;
+}
+.loginWrapper .inputBox input {
+  border-radius: 40px;
+  box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(0, 0, 0, 0.1);
+  border: 0 none;
+  background: #ebf5fc;
+}
+
+
+   input[type=submit] {
       font-family: 'FontAwesome', 'Second Font name' !important;
     border-radius: 40px;
     box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.8), 5px 5px 10px rgba(0, 0, 0, 0.1);
@@ -19,7 +70,7 @@
     height: 40px;
     color: #787878;
   }
-  .wrapper .inputBox input[type=submit]:active {
+  input[type=submit]:active {
     box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(0, 0, 0, 0.1);
     color: #ff4747;
   }

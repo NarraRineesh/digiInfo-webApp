@@ -1,5 +1,5 @@
-<div class="row w-100 d-flex justify-content-center align-items-center" style="position: absolute; top: 20px; z-index:2; margin-left: 0px;">
-    <div class="col"><i class="fa fa-chevron-left" aria-hidden="true" (click)="routeBack()"></i></div>
+<div class="row container d-flex justify-content-center align-item-center"style="margin-top: 15px; margin-bottom: 15px;">
+    <div class="col d-flex align-items-center"><i class="fa fa-chevron-left" aria-hidden="true" (click)="routeBack()"></i></div>
     <div class="col text-center">
         <h2 class="m-0">Preview</h2>
     </div>
@@ -19,13 +19,13 @@
       <input type="checkbox" (click)="selectedClass(department.data.name, i)" />
       {{department.data.name}}</label> -->
       <label  class="m-1">
-        <input type="checkbox"  />
+        <input type="checkbox"  (click)="selectStream('student',0)"/>
         Students</label>
         <label  class="m-1">
-            <input type="checkbox"  />
+            <input type="checkbox"  (click)="selectStream('staff',1)"/>
             Faculty</label>
         <label  class="m-1">
-            <input type="checkbox"  />
+            <input type="checkbox"  (click)="selectStream('hod',2)"/>
             HODs</label>
             <label  class="m-1">
                 <input type="checkbox"  />

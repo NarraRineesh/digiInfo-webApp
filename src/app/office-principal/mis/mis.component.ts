@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Location} from '@angular/common';
 import { MisService } from 'src/app/shared/services/mis.service';
+import { LocalUserService } from 'src/app/shared/services/localUser.serice';
+import { User } from 'src/app/shared/services/user';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-mis',
   templateUrl: './mis.component.html',
@@ -9,10 +12,17 @@ import { MisService } from 'src/app/shared/services/mis.service';
 export class MisComponent implements OnInit {
   loading: boolean = false;
   Mis: any[];
+  user: User;
+  searchText;
 
-  constructor(private location: Location, private mis: MisService) { }
-
+  constructor(private location: Location,
+    private mis: MisService,
+    private router: Router,
+    private localUserService: LocalUserService) {
+    this.user = this.localUserService.getUser()
+   }
   ngOnInit(): void {
+    this.getMis()
   }
   getMis(){
     this.loading = true
@@ -23,12 +33,13 @@ export class MisComponent implements OnInit {
           data:e.payload.doc.data()
         } as any;
       })
-      console.log(miss);
-      
-            // this.Mis = miss.filter(s => s.data.role === 'student');
-
-      this.loading = false
+  this.Mis = miss.filter(o => o.data.participants.some(({ email }) => email === this.user.email)).reverse();
+  console.log(this.Mis);
+  this.loading = false
     }); 
+  }
+  previewTemplate(template){
+    this.router.navigate(['admin/template'], { state: { template: template} })
   }
   routeBack(){
     this.location.back()

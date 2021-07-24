@@ -8,7 +8,7 @@ import { User } from './shared/services/user';
 
 export class UserService {
 
-  constructor(private angularFirestore: AngularFirestore) {}
+  constructor(private angularFirestore: AngularFirestore,) {}
 
   getUserDoc(id) {
     return this.angularFirestore
@@ -35,11 +35,12 @@ export class UserService {
   deleteUser(user) {
     return this.angularFirestore
       .collection("users")
-      .doc(user.id)
+      .doc(user.uid)
       .delete();
   }
   
   updateUser( id, user: any) {
+    console.log(user);
     return this.angularFirestore
       .collection("users")
       .doc(id)

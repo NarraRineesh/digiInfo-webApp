@@ -38,8 +38,8 @@ export class ProfileComponent implements OnInit {
       
     }); 
   }
-  editUser(){
-    this.showCase = true
+  openEdit(){
+    this.router.navigate(['admin/user/'+ this.userId])
   }
   updateUser(){
     this.userService.updateUser(this.User.uid,this.User);
