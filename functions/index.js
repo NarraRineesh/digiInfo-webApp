@@ -1,42 +1,44 @@
-const functions = require('firebase-functions');
-const admin = require('firebase-admin');
+const functions = require("firebase-functions");
 const nodemailer = require('nodemailer');
-const cors = require('cors')({origin: true});
-admin.initializeApp();
+const admin = require("firebase-admin");
+const cors = require('cors')({origin: '*'});
+admin.initializeApp()
 
-/**
-* Here we're using Gmail to send 
-*/
-let transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'rineeshkumar9@gmail.com',
-        pass: 'Yamuna@1998'
-    }
+exports.sendMail = functions.https.onCall((request, response) => {
+    response.set('Access-Control-Allow-Origin', '*');
+    response.set('Access-Control-Allow-Methods', 'GET, PUT, POST, OPTIONS');
+    response.set('Access-Control-Allow-Headers', '*');
+    response.set('Access-Control-Allow-Headers','Content-Type')
+    const transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true, 
+        auth: {
+            user: 'rineeshkumar9@gmail.com',
+            pass: 'Yamuna@1998'
+        }
+    });
+    // const {to, subject, text } = request.body;
+    const mailData = {
+        from: 'Rineesh <noreply@firebase.com>',
+        to: 'narrarineesh1997@gmail.com',
+        subject: "subject",
+        text: "text",
+        html: '<b>Hey there! </b><br> This is our first message sent with Nodemailer<br/>',
+    };
+    cors()(req, res, () => {
+        res.status(200).send({data: { success: true, message: 'yeah!' }})    
+      });
+
+    // transporter.sendMail(mailData, (error, info) => {
+    //     if (error) {
+    //         return console.log(error);
+    //     }
+    //     response.status(200).send({ message: "Mail send", message_id: info.messageId });
+    // });
 });
-
-exports.sendMail = functions.https.onRequest((req, res) => {
-    cors(req, res, () => {
-      
-        // getting dest email by query string
-        const dest = 'rineeshkumar9@gmail.com';
-
-        const mailOptions = {
-            from: 'Your Account Name <yourgmailaccount@gmail.com>', // Something like: Jane Doe <janedoe@gmail.com>
-            to: dest,
-            subject: 'I\'M A PICKLE!!!', // email subject
-            html: `<p style="font-size: 16px;">Pickle Riiiiiiiiiiiiiiiick!!</p>
-                <br />
-                <img src="https://images.prod.meredith.com/product/fc8754735c8a9b4aebb786278e7265a5/1538025388228/l/rick-and-morty-pickle-rick-sticker" />
-            ` // email content in HTML
-        };
-  
-        // returning result
-        return transporter.sendMail(mailOptions, (erro, info) => {
-            if(erro){
-                return res.send(erro.toString());
-            }
-            return res.send('Sended');
-        });
-    });    
-});
+exports.helloWorld = functions.https.onCall((request, response) => {
+    return cors(req, res, () => {
+        res.status(200).send('Hello World!')
+    })
+  });

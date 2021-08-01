@@ -15,15 +15,15 @@ export class LocalUserService {
   sessionSetUser(user: User) {
     window.sessionStorage.setItem(this.tokenKey, JSON.stringify(user));
   }
-  //this function not called. check why
+  // this function not called. check why
   getUser(): User {
     const user = window.localStorage.getItem(this.tokenKey);
     return JSON.parse(user);
   }
-  //delete complete localstorage when user logs out
+  // delete complete localstorage when user logs out
   destroyUser() {
-    window.localStorage.removeItem(this.tokenKey)
-    window.sessionStorage.removeItem(this.tokenKey)
+    window.localStorage.removeItem(this.tokenKey);
+    window.sessionStorage.removeItem(this.tokenKey);
   }
 
 }

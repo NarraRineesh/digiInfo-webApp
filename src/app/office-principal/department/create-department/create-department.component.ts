@@ -18,11 +18,11 @@ export class CreateDepartmentComponent implements OnInit {
   departmentForm: FormGroup;
   imageSrc: string | ArrayBuffer;
   constructor(private location: Location,
-     private departmentService: DepartmentService,
-     private fb: FormBuilder) { }
+              private departmentService: DepartmentService,
+              private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.myForm()
+    this.myForm();
   }
   myForm() {
     this.departmentForm = this.fb.group({
@@ -30,13 +30,14 @@ export class CreateDepartmentComponent implements OnInit {
     });
  }
   routeBack(){
-    this.location.back()
+    this.location.back();
   }
- 
+
   upload(): void {
-    const data ={
+    const data = {
       name: this.departmentForm.value.name
-    }
-    this.departmentService.createDepartment(data)
+    };
+    this.departmentService.createDepartment(data);
+    this.departmentForm.reset();
   }
 }

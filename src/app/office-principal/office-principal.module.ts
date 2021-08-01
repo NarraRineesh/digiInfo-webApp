@@ -20,10 +20,14 @@ import { DepartmentUserCreateComponent } from './department/department-user-crea
 import { CreatePrincipalComponent } from './create-principal/create-principal.component';
 import { NgxLoadingModule } from 'ngx-loading';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { TemplateEditComponent } from './templates/template-edit/template-edit.component';
+import { EditorComponent } from './templates/editor/editor.component';
+import { DocumentEditorContainerAllModule } from '@syncfusion/ej2-angular-documenteditor';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
-  declarations: [DashboardComponent, TemplatesComponent, PrincipalComponent, DepartmentComponent, UsersComponent, SingleUserComponent, UserCreateComponent, MisComponent, CreateTemplatesComponent, PreviewTemplateComponent, CreateDepartmentComponent, SingleDepartmentComponent, DepartmentUserCreateComponent, CreatePrincipalComponent],
+  declarations: [DashboardComponent, TemplatesComponent, PrincipalComponent, DepartmentComponent, UsersComponent, SingleUserComponent, UserCreateComponent, MisComponent, CreateTemplatesComponent, PreviewTemplateComponent, CreateDepartmentComponent, SingleDepartmentComponent, DepartmentUserCreateComponent, CreatePrincipalComponent, TemplateEditComponent, EditorComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -33,6 +37,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     OfficePrincipalRoutingModule,
     NgxDocViewerModule,
     NgxLoadingModule.forRoot({}),
+    DocumentEditorContainerAllModule,
+    HttpClientModule
   ]
 })
 export class OfficePrincipalModule { }

@@ -13,21 +13,21 @@ export class MisService {
     return this.angularFirestore
     .collection('miss')
     .doc(id)
-    .valueChanges()
+    .valueChanges();
   }
 
-  getMisList() { 
+  getMisList() {
     return this.angularFirestore
-    .collection("miss")
+    .collection('miss')
     .snapshotChanges();
   }
 
   createMIS(mis: any) {
-    return new Promise<any>((resolve, reject) =>{
+    return new Promise<any>((resolve, reject) => {
       this.angularFirestore
-        .collection("miss")
+        .collection('miss')
         .add(mis)
-        .then(response => { console.log(response) }, error => reject(error));
+        .then(response => { console.log(response); }, error => reject(error));
     });
   }
 
@@ -37,10 +37,10 @@ export class MisService {
 //       .doc(user.id)
 //       .delete();
 //   }
-  
+
   updateUser( id, mis: any) {
     return this.angularFirestore
-      .collection("miss")
+      .collection('miss')
       .doc(id)
       .update(mis);
   }

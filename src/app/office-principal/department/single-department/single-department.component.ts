@@ -13,51 +13,51 @@ import { User } from 'src/app/shared/services/user';
 })
 export class SingleDepartmentComponent implements OnInit {
 
-  Users: any[] =[];
-  department: string
+  Users: any[] = [];
+  department: string;
   user: User;
   loading = false;
   searchText;
-  constructor(private userService: UserService, 
-    private router: Router, 
-    private localUserService: LocalUserService,
-    private location: Location,
-    private route: ActivatedRoute,) { 
+  constructor(private userService: UserService,
+              private router: Router,
+              private localUserService: LocalUserService,
+              private location: Location,
+              private route: ActivatedRoute, ) {
     this.department = this.route.snapshot.params.department;
   }
   ngOnInit(): void {
-    
-    this.user = this.localUserService.getUser()
-    this.getUsers()
+
+    this.user = this.localUserService.getUser();
+    this.getUsers();
   }
   getUsers() {
-    this.loading = true
+    this.loading = true;
     this.userService.getUserList().subscribe(res => {
       const users = res.map( e => {
         return {
           id: e.payload.doc.id,
-          data:e.payload.doc.data()
+          data: e.payload.doc.data()
         } as any;
-      })
+      });
       this.Users = users.filter(s => s.data.department === this.department);
-this.loading= false
+      this.loading = false;
       console.log(this.Users);
-      
-    }); 
-     
+
+    });
+
   }
-  
+
   onListItemClick(id: string){
     console.log(id);
-    if(this.user.role === 'admin'){
-      this.router.navigate(['admin/user/'+ id])
+    if (this.user.role === 'admin'){
+      this.router.navigate(['admin/user/' + id]);
     }
   }
   addUser(){
-    this.router.navigate([`admin/department/user-create/${this.department}`])
+    this.router.navigate([`admin/department/user-create/${this.department}`]);
   }
   routeBack(){
-    this.location.back()
+    this.location.back();
   }
 
 }

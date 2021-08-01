@@ -88,6 +88,9 @@ export class TemplatesComponent implements OnInit {
   addTemplate(){
 this.router.navigate(['admin/add-template'])
   }
+  editTemplate(){
+    this.router.navigate(['admin/edit-template']) 
+  }
   routeBack(){
     this.location.back()
   }

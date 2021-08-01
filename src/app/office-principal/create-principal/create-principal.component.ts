@@ -15,16 +15,16 @@ export class CreatePrincipalComponent implements OnInit {
   department: string;
   userForm: FormGroup;
   constructor(private location: Location,
-     private authService: AuthService,
-     private fb: FormBuilder,
-     private toastr: ToastrService,
-     private route: ActivatedRoute
+              private authService: AuthService,
+              private fb: FormBuilder,
+              private toastr: ToastrService,
+              private route: ActivatedRoute
      ) {
 
       }
 
   ngOnInit(): void {
-    this.initForm()
+    this.initForm();
   }
   initForm() {
     this.userForm = this.fb.group({
@@ -33,24 +33,24 @@ export class CreatePrincipalComponent implements OnInit {
         password: ['', [Validators.required]],
         confirm_password: ['', [Validators.required]],
         role: ['principal'],
-        mobileNumber: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
+        mobileNumber: ['', [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]],
         department: ''
       },
         {
             validator: ConfirmedValidator('password', 'confirm_password')
         }
-    )}
+    ); }
   routeBack(){
-    this.location.back()
+    this.location.back();
   }
   onSubmit(): void {
-    if(this.userForm.valid){
+    if (this.userForm.valid){
       this.authService.SignUp(this.userForm.value);
       // this.toastr.success(`${this.userForm.value.name} created successfully.`);
     }
-    else{  
-this.toastr.warning('Please checkout all fields.')
-    } 
+    else{
+this.toastr.warning('Please checkout all fields.');
+    }
   }
 
 

@@ -8,16 +8,16 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./forgot-password.component.css']
 })
 export class ForgotPasswordComponent implements OnInit {
-  resetPasswordForm: FormGroup
+  resetPasswordForm: FormGroup;
   constructor(private fb: FormBuilder, private authService: AuthService) { }
 
   ngOnInit(): void {
 this.resetPasswordForm = this.fb.group({
   email: ['', Validators.required],
   password: ['', Validators.required]
-})
+});
   }
 onSubmit(){
-this.authService.ForgotPassword(this.resetPasswordForm.value.email)
+this.authService.ForgotPassword(this.resetPasswordForm.value.email);
 }
 }

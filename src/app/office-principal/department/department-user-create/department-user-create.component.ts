@@ -15,17 +15,17 @@ export class DepartmentUserCreateComponent implements OnInit {
   department: string;
   userForm: FormGroup;
   constructor(private location: Location,
-     private authService: AuthService,
-     private fb: FormBuilder,
-     private toastr: ToastrService,
-     private route: ActivatedRoute
+              private authService: AuthService,
+              private fb: FormBuilder,
+              private toastr: ToastrService,
+              private route: ActivatedRoute
      ) {
       this.department = this.route.snapshot.params.department;
 
       }
 
   ngOnInit(): void {
-    this.initForm()
+    this.initForm();
   }
   initForm() {
     this.userForm = this.fb.group({
@@ -33,25 +33,25 @@ export class DepartmentUserCreateComponent implements OnInit {
         email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
         password: ['', [Validators.required]],
         confirm_password: ['', [Validators.required]],
-        role: ['',[Validators.required]],
-        mobileNumber: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
+        role: ['', [Validators.required]],
+        mobileNumber: ['', [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]],
         department: this.department
       },
         {
             validator: ConfirmedValidator('password', 'confirm_password')
         }
-    )}
+    ); }
   routeBack(){
-    this.location.back()
+    this.location.back();
   }
   onSubmit(): void {
-    if(this.userForm.valid){
+    if (this.userForm.valid){
       this.authService.SignUp(this.userForm.value);
       // this.toastr.success(`${this.userForm.value.name} created successfully.`);
     }
-    else{  
-this.toastr.warning('Please checkout all fields.')
-    } 
+    else{
+this.toastr.warning('Please checkout all fields.');
+    }
   }
 
 }

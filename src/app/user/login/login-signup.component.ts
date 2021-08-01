@@ -12,17 +12,17 @@ export class LoginComponent implements OnInit {
 loginForm: FormGroup;
 
   constructor(private fb: FormBuilder,
-     private authService: AuthService,
-     private localUserService: LocalUserService) { }
+              private authService: AuthService,
+              private localUserService: LocalUserService) { }
 
   ngOnInit(): void {
 this.localUserService.destroyUser();
 this.loginForm = this.fb.group({
   email: ['', Validators.required],
   password: ['', Validators.required]
-})
+});
   }
 onSubmit(){
-this.authService.SignIn(this.loginForm.value.email, this.loginForm.value.password)
+this.authService.SignIn(this.loginForm.value.email, this.loginForm.value.password);
 }
 }

@@ -21,11 +21,13 @@ import { LocalUserService } from './shared/services/localUser.serice';
 import { ProfileComponent } from './user/profile/profile.component';
 import { LoaderService } from './components/loader/loader.service';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderInterceptor } from './components/loader/loader.interceptor';
 import { LoaderComponent } from './components/loader/loader.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxLoadingModule } from 'ngx-loading';
+import { AngularFireFunctionsModule } from '@angular/fire/functions';
+import { UserService } from './user.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,7 @@ import { NgxLoadingModule } from 'ngx-loading';
     ForgotPasswordComponent,
     RoleCardsComponent,
     ProfileComponent,
-    LoaderComponent
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,16 +47,19 @@ import { NgxLoadingModule } from 'ngx-loading';
     ToastrModule.forRoot(),
     NgxLoadingModule.forRoot({}),
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
     NgbModule,
     NgxSpinnerModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    AngularFireFunctionsModule,
   ],
   providers: [AuthService,
     LoaderService,
+    UserService,
      LocalUserService,
     // {
     //   provide: HTTP_INTERCEPTORS,

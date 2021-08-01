@@ -10,7 +10,7 @@ import { User } from 'src/app/shared/services/user';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-user: User
+user: User;
   constructor(private router: Router, private location: Location, private localUserService: LocalUserService) {
    this.user = this.localUserService.getUser();
    console.log(this.user);
@@ -18,16 +18,16 @@ user: User
   ngOnInit(): void {
   }
   route(path: string){
-    if(path != 'profile'){
-      this.router.navigate([`admin/${path}`])
+    if (path != 'profile'){
+      this.router.navigate([`admin/${path}`]);
     }
     else{
-      this.router.navigate([`profile/${this.user.uid}`])
+      this.router.navigate([`profile/${this.user.uid}`]);
     }
   }
   routeBack(){
-    console.log("route back called")
-    this.location.back()
+    console.log('route back called');
+    this.location.back();
   }
 
 }

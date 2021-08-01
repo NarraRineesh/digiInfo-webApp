@@ -1,6 +1,9 @@
-<a  class="float" (click)="addTemplate()" *ngIf="user.role === 'admin' || user.role === 'a-hod'">
-    <i class="fa fa-plus my-float"></i>
+<a  class="float1" (click)="editTemplate()" *ngIf="user.role === 'admin' || user.role === 'a-hod'">
+    <i class="fa fa-pencil-square my-float"></i>
     </a>
+	<a  class="float"  (click)="addTemplate()" *ngIf="user.role === 'admin' || user.role === 'a-hod'">
+		<i class="fa fa-plus my-float"></i>
+		</a>
 <div class="overall" #customLoadingTemplate>
     <div class="row w-100 d-flex justify-content-center align-items-center text-white" style="position: absolute; top: 20px; z-index:2; margin-left: 0px;">
         <div class="col"><i class="fa fa-chevron-left" aria-hidden="true" (click)="routeBack()"></i></div>

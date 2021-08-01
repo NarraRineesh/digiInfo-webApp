@@ -1,17 +1,18 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { AngularFireStorage } from '@angular/fire/storage';
-
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { Template } from './templates';
+const Api_location = 'http://localhost:5001/jntu-circular/us-central1/sendMail';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TemplateService {
 private basePath = '/templates';
-  constructor(private db: AngularFireDatabase, private storage: AngularFireStorage,) { }
+  constructor(private db: AngularFireDatabase, private storage: AngularFireStorage, private http: HttpClient ) { }
   pushFileToStorage(template: Template, name: string, department: string): Observable<number> {
     const filePath = `${this.basePath}/${name}`;
     const storageRef = this.storage.ref(filePath);
@@ -22,9 +23,9 @@ private basePath = '/templates';
         storageRef.getDownloadURL().subscribe(downloadURL => {
           template.url = downloadURL;
           template.name = name;
-          template.department =department;
+          template.department = department;
           template.approved = false;
-          template.waitingForApproval= false;
+          template.waitingForApproval = false;
           this.saveFileData(template);
         });
       })
@@ -38,9 +39,9 @@ private basePath = '/templates';
   }
 
   getFiles() {
-    return this.db.list(this.basePath)
+    return this.db.list(this.basePath);
   }
-  
+
 
   deleteFile(template: Template): void {
     this.deleteFileDatabase(template.key)
@@ -61,6 +62,17 @@ private basePath = '/templates';
    updateTemplate( key, value: any) {
     return this.db
       .list(this.basePath)
-      .update(key, value) 
+      .update(key, value);
   }
+  addMessage(body): Observable<any> {
+    const headerDict = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    }
+    
+    let headers = new Headers();
+    return this.http.post(Api_location, body);
+    // return this.http.post<any>(Api_location , body, requestOptions);
+}
 }

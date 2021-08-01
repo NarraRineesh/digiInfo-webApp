@@ -7,11 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class RoleCardsComponent implements OnInit {
-myData =[
-  {text: "Office of principal", src:"../../../assets/Saly-19.png"},
-  {text: "Department", src:"../../../assets/Saly-13.png"},
-  {text: "MIS", src:"../../../assets/Saly-42.png"}
-]
+myData = [
+  {text: 'Office of principal', src: '../../../assets/Saly-19.png'},
+  {text: 'Department', src: '../../../assets/Saly-13.png'},
+  {text: 'MIS', src: '../../../assets/Saly-42.png'}
+];
   constructor() { }
 
   ngOnInit(): void {

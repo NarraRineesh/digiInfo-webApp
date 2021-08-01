@@ -10,6 +10,7 @@ import { SingleDepartmentComponent } from './department/single-department/single
 import { MisComponent } from './mis/mis.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { CreateTemplatesComponent } from './templates/create-templates/create-templates.component';
+import { EditorComponent } from './templates/editor/editor.component';
 import { PreviewTemplateComponent } from './templates/preview-template/preview-template.component';
 import { TemplatesComponent } from './templates/templates.component';
 import { SingleUserComponent } from './users/single-user/single-user.component';
@@ -28,6 +29,9 @@ const routes: Routes = [
    canActivate:[AuthGuard]
   },
   {path: 'add-template', component: CreateTemplatesComponent,
+   canActivate:[AuthGuard]
+  },
+  {path: 'edit-template', component: EditorComponent,
    canActivate:[AuthGuard]
   },
   {path: 'principal', component: PrincipalComponent,

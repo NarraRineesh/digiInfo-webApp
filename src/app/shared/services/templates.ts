@@ -6,7 +6,7 @@ export class Template {
     approved: boolean;
     url: string;
     file: File;
-  
+
     constructor(file: File) {
       this.file = file;
     }
